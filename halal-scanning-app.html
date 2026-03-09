@@ -213,6 +213,90 @@
     .qr-text h3 { font-weight: 800; color: var(--primary); }
     .qr-text p { color: var(--text-secondary); }
 
+    /* Phone Mockup */
+    .phone-mockup {
+      position: relative;
+      background: #1a1a1a;
+      border-radius: 36px;
+      padding: 10px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25), inset 0 0 0 2px rgba(255,255,255,0.1);
+    }
+    .phone-notch {
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      background: #1a1a1a; border-radius: 0 0 14px 14px; z-index: 5;
+    }
+    .phone-screen {
+      background: linear-gradient(180deg, #F5E6D3 0%, #FFF4E8 40%, #FFF8F0 100%);
+      border-radius: 26px; overflow: hidden; position: relative;
+    }
+    .phone-status-bar {
+      padding: 8px 16px 4px; display: flex; justify-content: space-between; align-items: center;
+      font-size: 10px; font-weight: 600; color: #2D1506;
+    }
+    .phone-content {
+      padding: 12px 16px 0;
+    }
+    .phone-greeting {
+      font-size: 11px; color: #8D6E63; font-weight: 500; margin-bottom: 2px;
+    }
+    .phone-headline {
+      font-size: 16px; font-weight: 800; color: #2D1506; margin-bottom: 12px; line-height: 1.2;
+    }
+    .phone-modes {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px;
+    }
+    .phone-modes-row2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px;
+      padding: 0 15%;
+    }
+    .phone-mode-card {
+      background: #fff; border-radius: 12px; padding: 10px 6px 8px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .phone-mode-card.active-card {
+      border: 1.5px solid var(--accent);
+    }
+    .phone-mode-card svg { margin-bottom: 4px; }
+    .phone-mode-card span {
+      font-size: 9px; font-weight: 600; color: #2D1506;
+    }
+    .phone-recent-label {
+      font-size: 9px; font-weight: 700; color: #8D6E63; text-transform: uppercase;
+      letter-spacing: 0.5px; margin-bottom: 6px;
+    }
+    .phone-recent-card {
+      background: #fff; border-radius: 12px; padding: 10px 12px;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 10px;
+    }
+    .phone-recent-icon {
+      width: 32px; height: 32px; background: rgba(255,140,66,0.12);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .phone-recent-info { flex: 1; }
+    .phone-recent-info strong { font-size: 10px; color: #2D1506; display: block; }
+    .phone-recent-info small { font-size: 8px; color: #8D6E63; }
+    .phone-recent-badge {
+      background: #FF8C42; color: #fff; font-size: 8px; font-weight: 700;
+      padding: 3px 8px; border-radius: 10px;
+    }
+    .phone-nav {
+      display: flex; justify-content: space-around; align-items: center;
+      padding: 8px 0 10px; background: #fff;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .phone-nav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+    }
+    .phone-nav-item span { font-size: 7px; font-weight: 600; color: #8D6E63; }
+    .phone-nav-item.active-nav span { color: var(--accent); }
+    .phone-nav-center {
+      width: 36px; height: 36px; background: var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin-top: -18px; box-shadow: 0 4px 12px rgba(255,140,66,0.3);
+    }
+
     /* Bottom section */
     .website { font-weight: 800; color: var(--primary); }
     .website span { color: var(--accent); }
@@ -264,6 +348,17 @@
     #banner-a5 .website { font-size: 15px; margin-bottom: 4px; }
     #banner-a5 .trust-line { font-size: 9px; letter-spacing: 3px; }
     #banner-a5 .know-line { font-size: 10px; margin-top: 2px; }
+    #banner-a5 .phone-mockup { width: 160px; margin-bottom: 16px; }
+    #banner-a5 .phone-notch { width: 60px; height: 14px; }
+    #banner-a5 .phone-headline { font-size: 12px; }
+    #banner-a5 .phone-greeting { font-size: 8px; }
+    #banner-a5 .phone-mode-card { padding: 6px 4px 5px; }
+    #banner-a5 .phone-mode-card svg { width: 16px; height: 16px; }
+    #banner-a5 .phone-mode-card span { font-size: 7px; }
+    #banner-a5 .phone-modes { gap: 5px; margin-bottom: 8px; }
+    #banner-a5 .phone-modes-row2 { gap: 5px; margin-bottom: 8px; }
+    #banner-a5 .phone-recent-card { padding: 6px 8px; }
+    #banner-a5 .phone-nav-center { width: 26px; height: 26px; margin-top: -13px; }
     #banner-a5 .deco-circle-1 { width: 200px; height: 200px; top: -60px; right: -80px; background: var(--accent); }
     #banner-a5 .deco-circle-2 { width: 150px; height: 150px; bottom: 100px; left: -60px; background: var(--accent); }
 
@@ -305,6 +400,8 @@
     #banner-a4 .website { font-size: 19px; margin-bottom: 5px; }
     #banner-a4 .trust-line { font-size: 11px; letter-spacing: 4px; }
     #banner-a4 .know-line { font-size: 12px; margin-top: 3px; }
+    #banner-a4 .phone-mockup { width: 200px; margin-bottom: 24px; }
+    #banner-a4 .phone-notch { width: 70px; height: 16px; }
     #banner-a4 .deco-circle-1 { width: 300px; height: 300px; top: -80px; right: -100px; background: var(--accent); }
     #banner-a4 .deco-circle-2 { width: 220px; height: 220px; bottom: 150px; left: -80px; background: var(--accent); }
     #banner-a4 .deco-circle-3 { width: 180px; height: 180px; top: 400px; right: -60px; background: var(--primary); }
@@ -347,6 +444,9 @@
     #banner-a3 .website { font-size: 21px; margin-bottom: 5px; }
     #banner-a3 .trust-line { font-size: 12px; letter-spacing: 4px; }
     #banner-a3 .know-line { font-size: 13px; margin-top: 3px; }
+    #banner-a3 .phone-mockup { width: 230px; margin-bottom: 30px; }
+    #banner-a3 .phone-notch { width: 80px; height: 18px; }
+    #banner-a3 .phone-headline { font-size: 18px; }
     #banner-a3 .deco-circle-1 { width: 350px; height: 350px; top: -90px; right: -110px; background: var(--accent); }
     #banner-a3 .deco-circle-2 { width: 260px; height: 260px; bottom: 180px; left: -90px; background: var(--accent); }
     #banner-a3 .deco-circle-3 { width: 200px; height: 200px; top: 450px; right: -70px; background: var(--primary); }
@@ -389,6 +489,12 @@
     #banner-poster .website { font-size: 23px; margin-bottom: 6px; }
     #banner-poster .trust-line { font-size: 13px; letter-spacing: 5px; }
     #banner-poster .know-line { font-size: 14px; margin-top: 4px; }
+    #banner-poster .phone-mockup { width: 260px; margin-bottom: 36px; }
+    #banner-poster .phone-notch { width: 90px; height: 20px; }
+    #banner-poster .phone-headline { font-size: 20px; }
+    #banner-poster .phone-mode-card { padding: 12px 8px 10px; }
+    #banner-poster .phone-mode-card svg { width: 22px; height: 22px; }
+    #banner-poster .phone-mode-card span { font-size: 10px; }
     #banner-poster .deco-circle-1 { width: 400px; height: 400px; top: -100px; right: -120px; background: var(--accent); }
     #banner-poster .deco-circle-2 { width: 300px; height: 300px; bottom: 200px; left: -100px; background: var(--accent); }
     #banner-poster .deco-circle-3 { width: 250px; height: 250px; top: 500px; right: -80px; background: var(--primary); }
@@ -433,6 +539,8 @@
     #banner-pullup .website { font-size: 20px; margin-bottom: 5px; }
     #banner-pullup .trust-line { font-size: 11px; letter-spacing: 4px; }
     #banner-pullup .know-line { font-size: 12px; margin-top: 3px; }
+    #banner-pullup .phone-mockup { width: 190px; margin-bottom: 24px; }
+    #banner-pullup .phone-notch { width: 68px; height: 16px; }
     #banner-pullup .deco-circle-1 { width: 280px; height: 280px; top: -80px; right: -100px; background: var(--accent); }
     #banner-pullup .deco-circle-2 { width: 200px; height: 200px; bottom: 300px; left: -80px; background: var(--accent); }
     #banner-pullup .deco-circle-3 { width: 220px; height: 220px; top: 600px; right: -80px; background: var(--primary); }
@@ -492,6 +600,7 @@
     #banner-table .left-col .scan-modes,
     #banner-table .left-col .scan-modes-title,
     #banner-table .left-col .ulema-stamp-wrapper { display: none; }
+    #banner-table .phone-mockup { display: none; }
     #banner-table .deco-circle-1 { width: 300px; height: 300px; top: -100px; right: -80px; background: var(--accent); }
     #banner-table .deco-circle-2 { width: 200px; height: 200px; bottom: -60px; left: -60px; background: var(--accent); }
 
@@ -537,6 +646,39 @@
         <div class="headline">Halal or Haram?<br><span>Stop Guessing. Know Before You Eat.</span></div>
         <p class="subtitle">Get an instant halal verdict on any product — powered by AI and scholarly rulings from 5 madhabs.</p>
         <div class="divider"></div>
+        <!-- Phone Mockup -->
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-status-bar"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+            <div class="phone-content">
+              <div class="phone-greeting">Assalamu Alaikum</div>
+              <div class="phone-headline">What would you like to scan?</div>
+              <div class="phone-modes">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><rect x="2" y="4" width="4" height="16"/><rect x="7" y="4" width="2" height="16"/><rect x="11" y="4" width="1" height="16"/><rect x="14" y="4" width="3" height="16"/><rect x="19" y="4" width="3" height="16"/></svg><span>Barcode</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span>Ingredients</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D35400" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg><span>Receipt</span></div>
+              </div>
+              <div class="phone-modes-row2">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D1506" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg><span>Product</span></div>
+                <div class="phone-mode-card active-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Basket</span></div>
+              </div>
+              <div class="phone-recent-label">Recent Scan</div>
+              <div class="phone-recent-card">
+                <div class="phone-recent-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                <div class="phone-recent-info"><strong>Cadbury Dairy Milk</strong><small>Scanned 2 mins ago</small></div>
+                <div class="phone-recent-badge">Doubtful</div>
+              </div>
+            </div>
+            <div class="phone-nav">
+              <div class="phone-nav-item active-nav"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Home</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Nearby</span></div>
+              <div class="phone-nav-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>History</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></div>
+            </div>
+          </div>
+        </div>
         <!-- 3. Download Now -->
         <div class="download-section">
           <div class="download-title">Download Now</div>
@@ -596,6 +738,38 @@
         <div class="headline">Halal or Haram?<br><span>Stop Guessing. Know Before You Eat.</span></div>
         <p class="subtitle">Get an instant halal verdict on any product — powered by AI and scholarly rulings from 5 madhabs.</p>
         <div class="divider"></div>
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-status-bar"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+            <div class="phone-content">
+              <div class="phone-greeting">Assalamu Alaikum</div>
+              <div class="phone-headline">What would you like to scan?</div>
+              <div class="phone-modes">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><rect x="2" y="4" width="4" height="16"/><rect x="7" y="4" width="2" height="16"/><rect x="11" y="4" width="1" height="16"/><rect x="14" y="4" width="3" height="16"/><rect x="19" y="4" width="3" height="16"/></svg><span>Barcode</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span>Ingredients</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D35400" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg><span>Receipt</span></div>
+              </div>
+              <div class="phone-modes-row2">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D1506" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg><span>Product</span></div>
+                <div class="phone-mode-card active-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Basket</span></div>
+              </div>
+              <div class="phone-recent-label">Recent Scan</div>
+              <div class="phone-recent-card">
+                <div class="phone-recent-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                <div class="phone-recent-info"><strong>Cadbury Dairy Milk</strong><small>Scanned 2 mins ago</small></div>
+                <div class="phone-recent-badge">Doubtful</div>
+              </div>
+            </div>
+            <div class="phone-nav">
+              <div class="phone-nav-item active-nav"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Home</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Nearby</span></div>
+              <div class="phone-nav-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>History</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></div>
+            </div>
+          </div>
+        </div>
         <div class="download-section">
           <div class="download-title">Download Now</div>
           <div class="store-badges">
@@ -654,6 +828,38 @@
         <div class="headline">Halal or Haram?<br><span>Stop Guessing. Know Before You Eat.</span></div>
         <p class="subtitle">Get an instant halal verdict on any product — powered by AI and scholarly rulings from 5 madhabs.</p>
         <div class="divider"></div>
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-status-bar"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+            <div class="phone-content">
+              <div class="phone-greeting">Assalamu Alaikum</div>
+              <div class="phone-headline">What would you like to scan?</div>
+              <div class="phone-modes">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><rect x="2" y="4" width="4" height="16"/><rect x="7" y="4" width="2" height="16"/><rect x="11" y="4" width="1" height="16"/><rect x="14" y="4" width="3" height="16"/><rect x="19" y="4" width="3" height="16"/></svg><span>Barcode</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span>Ingredients</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D35400" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg><span>Receipt</span></div>
+              </div>
+              <div class="phone-modes-row2">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D1506" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg><span>Product</span></div>
+                <div class="phone-mode-card active-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Basket</span></div>
+              </div>
+              <div class="phone-recent-label">Recent Scan</div>
+              <div class="phone-recent-card">
+                <div class="phone-recent-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                <div class="phone-recent-info"><strong>Cadbury Dairy Milk</strong><small>Scanned 2 mins ago</small></div>
+                <div class="phone-recent-badge">Doubtful</div>
+              </div>
+            </div>
+            <div class="phone-nav">
+              <div class="phone-nav-item active-nav"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Home</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Nearby</span></div>
+              <div class="phone-nav-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>History</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></div>
+            </div>
+          </div>
+        </div>
         <div class="download-section">
           <div class="download-title">Download Now</div>
           <div class="store-badges">
@@ -712,6 +918,38 @@
         <div class="headline">Halal or Haram?<br><span>Stop Guessing. Know Before You Eat.</span></div>
         <p class="subtitle">Get an instant halal verdict on any product — powered by AI and scholarly rulings from 5 madhabs.</p>
         <div class="divider"></div>
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-status-bar"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+            <div class="phone-content">
+              <div class="phone-greeting">Assalamu Alaikum</div>
+              <div class="phone-headline">What would you like to scan?</div>
+              <div class="phone-modes">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><rect x="2" y="4" width="4" height="16"/><rect x="7" y="4" width="2" height="16"/><rect x="11" y="4" width="1" height="16"/><rect x="14" y="4" width="3" height="16"/><rect x="19" y="4" width="3" height="16"/></svg><span>Barcode</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span>Ingredients</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D35400" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg><span>Receipt</span></div>
+              </div>
+              <div class="phone-modes-row2">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D1506" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg><span>Product</span></div>
+                <div class="phone-mode-card active-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Basket</span></div>
+              </div>
+              <div class="phone-recent-label">Recent Scan</div>
+              <div class="phone-recent-card">
+                <div class="phone-recent-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                <div class="phone-recent-info"><strong>Cadbury Dairy Milk</strong><small>Scanned 2 mins ago</small></div>
+                <div class="phone-recent-badge">Doubtful</div>
+              </div>
+            </div>
+            <div class="phone-nav">
+              <div class="phone-nav-item active-nav"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Home</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Nearby</span></div>
+              <div class="phone-nav-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>History</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></div>
+            </div>
+          </div>
+        </div>
         <div class="download-section">
           <div class="download-title">Download Now</div>
           <div class="store-badges">
@@ -770,6 +1008,38 @@
         <div class="headline">Halal or Haram?<br><span>Stop Guessing. Know Before You Eat.</span></div>
         <p class="subtitle">Get an instant halal verdict on any product — powered by AI and scholarly rulings from 5 madhabs.</p>
         <div class="divider"></div>
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-status-bar"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+            <div class="phone-content">
+              <div class="phone-greeting">Assalamu Alaikum</div>
+              <div class="phone-headline">What would you like to scan?</div>
+              <div class="phone-modes">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><rect x="2" y="4" width="4" height="16"/><rect x="7" y="4" width="2" height="16"/><rect x="11" y="4" width="1" height="16"/><rect x="14" y="4" width="3" height="16"/><rect x="19" y="4" width="3" height="16"/></svg><span>Barcode</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span>Ingredients</span></div>
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D35400" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg><span>Receipt</span></div>
+              </div>
+              <div class="phone-modes-row2">
+                <div class="phone-mode-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D1506" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg><span>Product</span></div>
+                <div class="phone-mode-card active-card"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Basket</span></div>
+              </div>
+              <div class="phone-recent-label">Recent Scan</div>
+              <div class="phone-recent-card">
+                <div class="phone-recent-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                <div class="phone-recent-info"><strong>Cadbury Dairy Milk</strong><small>Scanned 2 mins ago</small></div>
+                <div class="phone-recent-badge">Doubtful</div>
+              </div>
+            </div>
+            <div class="phone-nav">
+              <div class="phone-nav-item active-nav"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Home</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Nearby</span></div>
+              <div class="phone-nav-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>History</span></div>
+              <div class="phone-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Settings</span></div>
+            </div>
+          </div>
+        </div>
         <div class="download-section">
           <div class="download-title">Download Now</div>
           <div class="store-badges">
