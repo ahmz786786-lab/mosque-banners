@@ -264,8 +264,9 @@
     .phone-screen {
       background: linear-gradient(180deg, #F5E6D3 0%, #FFF4E8 35%, #FFF8F0 100%);
       border-radius: 34px; overflow: hidden; position: relative;
+      aspect-ratio: 9 / 19.5;
+      display: flex; flex-direction: column;
     }
-    /* Glass reflection effect */
     .phone-screen::after {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -274,101 +275,108 @@
     }
     .phone-status {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 20px 6px;
-      font-size: 10px; font-weight: 600; color: #2D1506;
+      padding: 10px 16px 4px;
+      font-size: 9px; font-weight: 600; color: #2D1506;
+      flex-shrink: 0;
     }
-    .phone-status-icons { display: flex; align-items: center; gap: 4px; }
+    .phone-status-icons { display: flex; align-items: center; gap: 3px; }
+    .phone-status-icons svg { width: 10px; height: 10px; }
+    .phone-status-icons svg:last-child { width: 16px; height: 10px; }
     .phone-body {
-      padding: 8px 14px 0;
+      padding: 4px 10px 0;
+      flex: 1; display: flex; flex-direction: column;
     }
     .ph-greeting {
-      font-size: 10px; color: #8D6E63; font-weight: 500; margin-bottom: 1px;
+      font-size: 8px; color: #8D6E63; font-weight: 500; margin-bottom: 0;
     }
     .ph-title {
-      font-size: 15px; font-weight: 800; color: #2D1506; line-height: 1.2; margin-bottom: 10px;
+      font-size: 12px; font-weight: 800; color: #2D1506; line-height: 1.15; margin-bottom: 6px;
     }
     .ph-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 6px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 4px;
     }
     .ph-grid-2 {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px;
       padding: 0 16%;
     }
     .ph-card {
       background: #fff;
-      border-radius: 14px;
-      padding: 10px 4px 8px;
+      border-radius: 10px;
+      padding: 6px 3px 5px;
       display: flex; flex-direction: column; align-items: center;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
-      transition: all 0.2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 0 0 0.5px rgba(0,0,0,0.04);
     }
     .ph-card.ph-active {
-      box-shadow: 0 2px 8px rgba(255,140,66,0.15), 0 0 0 1.5px var(--accent);
+      box-shadow: 0 1px 6px rgba(255,140,66,0.15), 0 0 0 1.5px var(--accent);
     }
     .ph-card-icon {
-      width: 28px; height: 28px; border-radius: 10px;
+      width: 22px; height: 22px; border-radius: 7px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
+    .ph-card-icon svg { width: 12px; height: 12px; }
     .ph-card span {
-      font-size: 7.5px; font-weight: 700; color: #2D1506; letter-spacing: -0.1px;
+      font-size: 6px; font-weight: 700; color: #2D1506; letter-spacing: -0.1px;
     }
     .ph-divider {
-      height: 1px; background: rgba(0,0,0,0.06); margin: 0 -14px 8px;
+      height: 1px; background: rgba(0,0,0,0.06); margin: 0 -10px 4px;
     }
     .ph-recent-label {
-      font-size: 8px; font-weight: 700; color: #8D6E63; text-transform: uppercase;
-      letter-spacing: 0.8px; margin-bottom: 6px;
+      font-size: 6.5px; font-weight: 700; color: #8D6E63; text-transform: uppercase;
+      letter-spacing: 0.8px; margin-bottom: 4px;
     }
     .ph-result {
-      background: #fff; border-radius: 14px; padding: 8px 10px;
-      display: flex; align-items: center; gap: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
-      margin-bottom: 8px;
+      background: #fff; border-radius: 10px; padding: 5px 7px;
+      display: flex; align-items: center; gap: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 0 0 0.5px rgba(0,0,0,0.04);
+      margin-bottom: 4px;
     }
     .ph-result-icon {
-      width: 28px; height: 28px; background: linear-gradient(135deg, rgba(255,140,66,0.15), rgba(255,140,66,0.05));
-      border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 22px; height: 22px; background: linear-gradient(135deg, rgba(255,140,66,0.15), rgba(255,140,66,0.05));
+      border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
+    .ph-result-icon svg { width: 11px; height: 11px; }
     .ph-result-text { flex: 1; }
-    .ph-result-text strong { font-size: 9px; color: #2D1506; display: block; font-weight: 700; }
-    .ph-result-text small { font-size: 7px; color: #8D6E63; }
+    .ph-result-text strong { font-size: 7px; color: #2D1506; display: block; font-weight: 700; }
+    .ph-result-text small { font-size: 5.5px; color: #8D6E63; }
     .ph-badge-doubtful {
       background: linear-gradient(135deg, #FF8C42, #D35400);
-      color: #fff; font-size: 7px; font-weight: 800;
-      padding: 3px 8px; border-radius: 8px;
-      letter-spacing: 0.2px;
+      color: #fff; font-size: 5.5px; font-weight: 800;
+      padding: 2px 6px; border-radius: 6px;
+      letter-spacing: 0.2px; white-space: nowrap;
     }
     .ph-badge-halal {
       background: linear-gradient(135deg, #4CAF50, #2E7D32);
-      color: #fff; font-size: 7px; font-weight: 800;
-      padding: 3px 8px; border-radius: 8px;
+      color: #fff; font-size: 5.5px; font-weight: 800;
+      padding: 2px 6px; border-radius: 6px; white-space: nowrap;
     }
     .ph-tab-bar {
       display: flex; justify-content: space-around; align-items: flex-end;
-      padding: 6px 0 12px;
-      background: rgba(255,255,255,0.85);
+      padding: 4px 0 6px;
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(10px);
       border-top: 1px solid rgba(0,0,0,0.05);
-      position: relative;
+      flex-shrink: 0; margin-top: auto;
     }
     .ph-tab {
-      display: flex; flex-direction: column; align-items: center; gap: 1px;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
     }
-    .ph-tab span { font-size: 6.5px; font-weight: 600; color: #8D6E63; }
+    .ph-tab svg { width: 11px; height: 11px; }
+    .ph-tab span { font-size: 5px; font-weight: 600; color: #8D6E63; }
     .ph-tab.ph-tab-active span { color: var(--accent); }
     .ph-tab-scan {
-      width: 34px; height: 34px;
+      width: 28px; height: 28px;
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      margin-top: -20px;
-      box-shadow: 0 6px 16px rgba(255,140,66,0.4);
+      margin-top: -16px;
+      box-shadow: 0 4px 12px rgba(255,140,66,0.4);
     }
+    .ph-tab-scan svg { width: 13px; height: 13px; }
     .ph-home-bar {
-      width: 36%; height: 4px; background: #2D1506; border-radius: 3px;
-      margin: 0 auto 6px; opacity: 0.2;
+      width: 30%; height: 3px; background: #2D1506; border-radius: 3px;
+      margin: 2px auto 4px; opacity: 0.2; flex-shrink: 0;
     }
 
     /* Bottom section */
@@ -422,33 +430,11 @@
     #banner-a5 .website { font-size: 15px; margin-bottom: 4px; }
     #banner-a5 .trust-line { font-size: 9px; letter-spacing: 3px; }
     #banner-a5 .know-line { font-size: 10px; margin-top: 2px; }
-    #banner-a5 .phone-mockup { width: 150px; margin-bottom: 18px; border-radius: 30px; padding: 8px; }
-    #banner-a5 .phone-mockup::before { border-radius: 30px; }
-    #banner-a5 .phone-screen { border-radius: 23px; }
-    #banner-a5 .phone-island { width: 48px; height: 14px; top: 11px; border-radius: 10px; }
-    #banner-a5 .phone-island-cam { width: 6px; height: 6px; margin-right: 6px; }
-    #banner-a5 .phone-status { padding: 10px 14px 4px; font-size: 8px; }
-    #banner-a5 .phone-body { padding: 6px 10px 0; }
-    #banner-a5 .ph-greeting { font-size: 7px; }
-    #banner-a5 .ph-title { font-size: 11px; margin-bottom: 7px; }
-    #banner-a5 .ph-grid { gap: 4px; margin-bottom: 4px; }
-    #banner-a5 .ph-grid-2 { gap: 4px; margin-bottom: 6px; }
-    #banner-a5 .ph-card { border-radius: 10px; padding: 7px 3px 5px; }
-    #banner-a5 .ph-card-icon { width: 20px; height: 20px; border-radius: 7px; margin-bottom: 2px; }
-    #banner-a5 .ph-card-icon svg { width: 11px; height: 11px; }
-    #banner-a5 .ph-card span { font-size: 6px; }
-    #banner-a5 .ph-result { padding: 6px 8px; gap: 6px; border-radius: 10px; }
-    #banner-a5 .ph-result-icon { width: 22px; height: 22px; border-radius: 7px; }
-    #banner-a5 .ph-result-icon svg { width: 11px; height: 11px; }
-    #banner-a5 .ph-result-text strong { font-size: 7px; }
-    #banner-a5 .ph-result-text small { font-size: 6px; }
-    #banner-a5 .ph-badge-doubtful, #banner-a5 .ph-badge-halal { font-size: 6px; padding: 2px 6px; }
-    #banner-a5 .ph-tab-scan { width: 24px; height: 24px; margin-top: -14px; }
-    #banner-a5 .ph-tab-scan svg { width: 12px; height: 12px; }
-    #banner-a5 .ph-tab svg { width: 10px; height: 10px; }
-    #banner-a5 .ph-tab span { font-size: 5px; }
-    #banner-a5 .ph-tab-bar { padding: 4px 0 6px; }
-    #banner-a5 .ph-home-bar { height: 3px; margin-bottom: 4px; }
+    #banner-a5 .phone-mockup { width: 140px; margin-bottom: 16px; border-radius: 28px; padding: 7px; }
+    #banner-a5 .phone-mockup::before { border-radius: 28px; }
+    #banner-a5 .phone-screen { border-radius: 22px; }
+    #banner-a5 .phone-island { width: 40px; height: 12px; top: 9px; border-radius: 8px; }
+    #banner-a5 .phone-island-cam { width: 5px; height: 5px; margin-right: 5px; }
     #banner-a5 .deco-circle-1 { width: 200px; height: 200px; top: -60px; right: -80px; background: var(--accent); }
     #banner-a5 .deco-circle-2 { width: 150px; height: 150px; bottom: 100px; left: -60px; background: var(--accent); }
 
@@ -490,10 +476,10 @@
     #banner-a4 .website { font-size: 19px; margin-bottom: 5px; }
     #banner-a4 .trust-line { font-size: 11px; letter-spacing: 4px; }
     #banner-a4 .know-line { font-size: 12px; margin-top: 3px; }
-    #banner-a4 .phone-mockup { width: 200px; margin-bottom: 26px; border-radius: 38px; padding: 10px; }
-    #banner-a4 .phone-mockup::before { border-radius: 38px; }
-    #banner-a4 .phone-screen { border-radius: 29px; }
-    #banner-a4 .phone-island { width: 56px; height: 16px; top: 14px; }
+    #banner-a4 .phone-mockup { width: 180px; margin-bottom: 24px; border-radius: 36px; padding: 9px; }
+    #banner-a4 .phone-mockup::before { border-radius: 36px; }
+    #banner-a4 .phone-screen { border-radius: 28px; }
+    #banner-a4 .phone-island { width: 52px; height: 15px; top: 13px; }
     #banner-a4 .phone-island-cam { width: 7px; height: 7px; }
     #banner-a4 .deco-circle-1 { width: 300px; height: 300px; top: -80px; right: -100px; background: var(--accent); }
     #banner-a4 .deco-circle-2 { width: 220px; height: 220px; bottom: 150px; left: -80px; background: var(--accent); }
@@ -537,11 +523,8 @@
     #banner-a3 .website { font-size: 21px; margin-bottom: 5px; }
     #banner-a3 .trust-line { font-size: 12px; letter-spacing: 4px; }
     #banner-a3 .know-line { font-size: 13px; margin-top: 3px; }
-    #banner-a3 .phone-mockup { width: 240px; margin-bottom: 32px; }
-    #banner-a3 .phone-island { width: 64px; height: 18px; top: 16px; }
-    #banner-a3 .ph-title { font-size: 17px; }
-    #banner-a3 .ph-card-icon { width: 32px; height: 32px; }
-    #banner-a3 .ph-card span { font-size: 8px; }
+    #banner-a3 .phone-mockup { width: 210px; margin-bottom: 30px; }
+    #banner-a3 .phone-island { width: 60px; height: 17px; top: 15px; }
     #banner-a3 .deco-circle-1 { width: 350px; height: 350px; top: -90px; right: -110px; background: var(--accent); }
     #banner-a3 .deco-circle-2 { width: 260px; height: 260px; bottom: 180px; left: -90px; background: var(--accent); }
     #banner-a3 .deco-circle-3 { width: 200px; height: 200px; top: 450px; right: -70px; background: var(--primary); }
@@ -584,18 +567,11 @@
     #banner-poster .website { font-size: 23px; margin-bottom: 6px; }
     #banner-poster .trust-line { font-size: 13px; letter-spacing: 5px; }
     #banner-poster .know-line { font-size: 14px; margin-top: 4px; }
-    #banner-poster .phone-mockup { width: 280px; margin-bottom: 40px; border-radius: 48px; padding: 14px; }
-    #banner-poster .phone-mockup::before { border-radius: 48px; }
-    #banner-poster .phone-screen { border-radius: 36px; }
-    #banner-poster .phone-island { width: 72px; height: 20px; top: 18px; border-radius: 14px; }
+    #banner-poster .phone-mockup { width: 240px; margin-bottom: 36px; border-radius: 46px; padding: 13px; }
+    #banner-poster .phone-mockup::before { border-radius: 46px; }
+    #banner-poster .phone-screen { border-radius: 35px; }
+    #banner-poster .phone-island { width: 68px; height: 19px; top: 17px; border-radius: 12px; }
     #banner-poster .phone-island-cam { width: 9px; height: 9px; margin-right: 10px; }
-    #banner-poster .ph-title { font-size: 18px; }
-    #banner-poster .ph-card-icon { width: 34px; height: 34px; border-radius: 12px; }
-    #banner-poster .ph-card-icon svg { width: 17px; height: 17px; }
-    #banner-poster .ph-card span { font-size: 9px; }
-    #banner-poster .ph-card { border-radius: 16px; padding: 12px 6px 10px; }
-    #banner-poster .ph-result { padding: 10px 12px; }
-    #banner-poster .ph-tab-scan { width: 40px; height: 40px; margin-top: -22px; }
     #banner-poster .deco-circle-1 { width: 400px; height: 400px; top: -100px; right: -120px; background: var(--accent); }
     #banner-poster .deco-circle-2 { width: 300px; height: 300px; bottom: 200px; left: -100px; background: var(--accent); }
     #banner-poster .deco-circle-3 { width: 250px; height: 250px; top: 500px; right: -80px; background: var(--primary); }
@@ -640,10 +616,10 @@
     #banner-pullup .website { font-size: 20px; margin-bottom: 5px; }
     #banner-pullup .trust-line { font-size: 11px; letter-spacing: 4px; }
     #banner-pullup .know-line { font-size: 12px; margin-top: 3px; }
-    #banner-pullup .phone-mockup { width: 200px; margin-bottom: 26px; border-radius: 38px; padding: 10px; }
-    #banner-pullup .phone-mockup::before { border-radius: 38px; }
-    #banner-pullup .phone-screen { border-radius: 29px; }
-    #banner-pullup .phone-island { width: 56px; height: 16px; top: 14px; }
+    #banner-pullup .phone-mockup { width: 180px; margin-bottom: 24px; border-radius: 36px; padding: 9px; }
+    #banner-pullup .phone-mockup::before { border-radius: 36px; }
+    #banner-pullup .phone-screen { border-radius: 28px; }
+    #banner-pullup .phone-island { width: 52px; height: 15px; top: 13px; }
     #banner-pullup .deco-circle-1 { width: 280px; height: 280px; top: -80px; right: -100px; background: var(--accent); }
     #banner-pullup .deco-circle-2 { width: 200px; height: 200px; bottom: 300px; left: -80px; background: var(--accent); }
     #banner-pullup .deco-circle-3 { width: 220px; height: 220px; top: 600px; right: -80px; background: var(--primary); }
