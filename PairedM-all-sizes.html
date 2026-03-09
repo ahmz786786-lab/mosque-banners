@@ -8,35 +8,57 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: #e0e0e0; color: #333; }
+  body { font-family: 'Inter', sans-serif; background: #d0d0d0; color: #333; line-height: 1.6; }
 
-  /* ── Toolbar navigation ── */
+  /* ══════════════════════════════════
+     TOOLBAR / SIZE SELECTOR
+     ══════════════════════════════════ */
   .toolbar {
     position: sticky; top: 0; z-index: 100;
     background: rgba(26,26,46,0.95); backdrop-filter: blur(12px);
-    padding: 14px 20px; display: flex; justify-content: center; gap: 8px;
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    flex-wrap: wrap;
     border-bottom: 2px solid rgba(201,168,76,0.3);
   }
+  .toolbar-label {
+    color: #c9a84c; font-size: 14px; font-weight: 700; margin-right: 8px;
+    letter-spacing: 0.5px;
+  }
   .size-btn {
-    padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600;
-    border: 2px solid rgba(255,255,255,0.15); background: transparent; color: #fff;
+    padding: 8px 20px; border-radius: 10px; font-size: 13px; font-weight: 700;
+    border: 2px solid rgba(255,255,255,0.2); background: transparent; color: #fff;
     cursor: pointer; transition: all 0.2s;
   }
   .size-btn:hover { border-color: #c9a84c; color: #c9a84c; }
   .size-btn.active { background: #c9a84c; border-color: #c9a84c; color: #1a1a2e; }
-  .banner-wrapper { display: none; padding: 40px 20px; justify-content: center; }
+  .toolbar-hint {
+    width: 100%; text-align: center; font-size: 11px; color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+  }
+
+  /* ══════════════════════════════════
+     BANNER WRAPPER
+     ══════════════════════════════════ */
+  .banner-wrapper {
+    display: none; justify-content: center;
+    padding: 80px 40px 60px;
+  }
   .banner-wrapper.active { display: flex; }
 
-  /* ── Page container ── */
+  /* ══════════════════════════════════
+     PAGE CONTAINER
+     ══════════════════════════════════ */
   .page {
     margin: 0 auto; position: relative; overflow: hidden;
-    background: #fffdf5; box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    background: #fffdf5;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
   }
 
   /* ── Decorative background orbs ── */
   .deco-orb {
     position: absolute; border-radius: 50%; pointer-events: none; z-index: 1;
-    filter: blur(40px); opacity: 0.12;
+    filter: blur(40px); opacity: 0.10;
   }
   .deco-orb-1 {
     width: 200px; height: 200px; top: -60px; right: -40px;
@@ -52,10 +74,10 @@
   }
   .deco-orb-4 {
     width: 120px; height: 120px; top: 30%; left: 10%;
-    background: radial-gradient(circle, #c9a84c, transparent); opacity: 0.08;
+    background: radial-gradient(circle, #c9a84c, transparent); opacity: 0.06;
   }
 
-  /* ── Gold ornamental border ── */
+  /* ── Gold ornamental double border ── */
   .page::before {
     content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;
     border: 2px solid #c9a84c; pointer-events: none; z-index: 10;
@@ -66,16 +88,27 @@
   }
 
   /* ── Corner ornaments ── */
-  .corner { position: absolute; z-index: 11; color: #c9a84c; line-height: 1; }
+  .corner {
+    position: absolute; z-index: 11; color: #c9a84c; line-height: 1;
+    font-family: serif;
+  }
   .corner-tl { top: 14px; left: 14px; }
   .corner-tr { top: 14px; right: 14px; }
   .corner-bl { bottom: 14px; left: 14px; }
   .corner-br { bottom: 14px; right: 14px; }
 
-  /* ── Inner wrapper ── */
-  .inner { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; }
+  /* ══════════════════════════════════
+     INNER CONTENT WRAPPER
+     ══════════════════════════════════ */
+  .inner {
+    position: relative; z-index: 5;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+  }
 
-  /* ── Logo area — matching actual PairedM logo ── */
+  /* ══════════════════════════════════
+     LOGO AREA
+     ══════════════════════════════════ */
   .logo-area {
     display: flex; align-items: center; justify-content: center;
   }
@@ -85,1114 +118,1365 @@
   .heart-big { display: block; filter: drop-shadow(0 2px 4px rgba(192,57,43,0.3)); }
   .heart-big svg { fill: #c0392b; }
   .heart-sm1, .heart-sm2 { position: absolute; }
-  .heart-sm1 svg, .heart-sm2 svg { fill: #c0392b; }
+  .heart-sm1 svg, .heart-sm2 svg { fill: #c0392b; opacity: 0.5; }
   .logo-divider {
     width: 2px; background: linear-gradient(180deg, #e8721d, #c9a84c);
-    align-self: stretch; margin: 0;
-    border-radius: 1px;
+    align-self: stretch; border-radius: 1px;
   }
-  .logo-text-group { display: flex; flex-direction: column; justify-content: center; }
+  .logo-text-group {
+    display: flex; flex-direction: column; justify-content: center;
+  }
   .logo-main-text {
-    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    font-family: 'Cormorant Garamond', serif; font-weight: 700;
     text-transform: uppercase; letter-spacing: 3px;
     background: linear-gradient(135deg, #e8721d 0%, #d4943a 40%, #c9a84c 70%, #e8a530 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
+    background-clip: text; line-height: 1.1;
   }
-  .logo-main-text .bracket {
-    font-weight: 700; color: #e8721d;
-    -webkit-text-fill-color: #e8721d;
+  .logo-main-text span {
+    font-weight: 400; opacity: 0.9;
   }
-  .logo-subtitle-text {
+  .logo-subtitle {
     font-family: 'Inter', sans-serif; font-weight: 500;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, #d4943a, #c9a84c);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #c9a84c; letter-spacing: 1.5px; text-transform: uppercase;
   }
 
-  /* ── Trust badges row ── */
-  .trust-row { display: flex; justify-content: center; flex-wrap: wrap; }
-  .trust-badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
-  }
-  .trust-badge .icon {
-    display: inline-flex; align-items: center; justify-content: center;
-    border-radius: 50%; color: #fff; font-weight: 700;
-  }
-  .trust-badge:nth-child(1) .icon { background: #27ae60; }
-  .trust-badge:nth-child(1) { color: #27ae60; }
-  .trust-badge:nth-child(2) .icon { background: #c0392b; }
-  .trust-badge:nth-child(2) { color: #c0392b; }
-  .trust-badge:nth-child(3) .icon { background: #27ae60; }
-  .trust-badge:nth-child(3) { color: #27ae60; }
-  .trust-badge:nth-child(4) .icon { background: #c9a84c; }
-  .trust-badge:nth-child(4) { color: #c9a84c; }
-
-  /* ── Headline ── */
-  .headline {
-    background: linear-gradient(135deg, #8b1a1a 0%, #a52a2a 50%, #8b1a1a 100%);
-    text-align: center; color: #fff; width: 100%;
-  }
-  .headline h2 {
-    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600;
-    line-height: 1.4;
-  }
-
-  /* ── Download row (phone + QR side by side) ── */
-  .download-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
+  /* ══════════════════════════════════
+     TRUST BADGES ROW
+     ══════════════════════════════════ */
+  .trust-badges {
+    display: flex; justify-content: center; flex-wrap: wrap;
     width: 100%;
   }
-  .download-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
+  .trust-badge {
+    display: flex; align-items: center;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    border-radius: 20px; background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(201,168,76,0.25);
+    white-space: nowrap;
+  }
+  .trust-badge-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; border-radius: 50%; flex-shrink: 0;
   }
 
-  /* ── QR Section ── */
-  .qr-section { text-align: center; }
+  /* ══════════════════════════════════
+     HEADLINE BANNER
+     ══════════════════════════════════ */
+  .headline-banner {
+    width: 100%;
+    background: linear-gradient(135deg, #8b1a1a 0%, #a52020 50%, #8b1a1a 100%);
+    text-align: center;
+    position: relative;
+  }
+  .headline-banner h1 {
+    font-family: 'Playfair Display', serif; font-weight: 700;
+    color: #fff; line-height: 1.15;
+  }
+  .headline-banner::before, .headline-banner::after {
+    content: ''; position: absolute; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+  }
+  .headline-banner::before { top: 0; }
+  .headline-banner::after { bottom: 0; }
+
+  /* ── Subtitle ── */
+  .subtitle {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: #5a3e2b; font-weight: 400; text-align: center;
+  }
+
+  /* ══════════════════════════════════
+     PHONE MOCKUP
+     ══════════════════════════════════ */
+  .phone-mockup {
+    position: relative;
+    background: linear-gradient(145deg, #2a2a2e 0%, #1a1a1a 50%, #2a2a2e 100%);
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.3),
+      0 8px 16px rgba(0,0,0,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.12),
+      inset 0 -1px 0 rgba(0,0,0,0.3);
+  }
+  .phone-mockup::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    border: 1.5px solid rgba(255,255,255,0.1);
+    pointer-events: none;
+  }
+  .phone-screen {
+    background: #fff; overflow: hidden; position: relative;
+    display: flex; flex-direction: column;
+    aspect-ratio: 9 / 19.5;
+  }
+  .phone-island {
+    position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+    background: #000; z-index: 10;
+    display: flex; align-items: center; justify-content: flex-end;
+  }
+  .phone-island-cam {
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #2a2a4a, #0a0a1a);
+    box-shadow: inset 0 0 2px rgba(100,100,200,0.3);
+  }
+
+  /* Phone status bar */
+  .ph-status {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10% 8% 2%; font-size: 7px; font-weight: 600; color: #1a1a1a;
+    flex-shrink: 0;
+  }
+  .ph-status-icons { display: flex; align-items: center; gap: 2px; }
+  .ph-status-icons span { font-size: 7px; }
+
+  /* Phone body content */
+  .ph-body {
+    padding: 4% 8% 0; flex: 1;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 4%;
+  }
+  .ph-label {
+    font-size: 5.5px; font-weight: 600; color: #999;
+    text-transform: uppercase; letter-spacing: 0.8px;
+  }
+  .ph-title {
+    font-size: 9px; font-weight: 800; color: #1a1a1a; line-height: 1.2;
+  }
+  .ph-levels { width: 100%; display: flex; flex-direction: column; gap: 5%; }
+  .ph-level {
+    display: flex; align-items: center;
+    background: #f8f8f8; border-radius: 8px;
+    padding: 4% 5%; gap: 5%;
+  }
+  .ph-level-icon {
+    width: 16px; height: 16px; min-width: 16px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .ph-level-icon svg { width: 8px; height: 8px; }
+  .ph-level-text { flex: 1; text-align: left; }
+  .ph-level-name { font-size: 6px; font-weight: 700; color: #1a1a1a; display: block; }
+  .ph-level-type { font-size: 5px; color: #888; display: block; }
+  .ph-level-price {
+    font-size: 7px; font-weight: 800; color: #1a1a1a; white-space: nowrap;
+  }
+  .ph-note {
+    font-size: 5px; color: #aaa; font-weight: 500; text-align: center;
+  }
+
+  /* Phone tab bar */
+  .ph-tab-bar {
+    display: flex; justify-content: space-evenly; align-items: center;
+    padding: 3% 0 1%;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    flex-shrink: 0; margin-top: auto;
+  }
+  .ph-tab {
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
+  }
+  .ph-tab svg { width: 10px; height: 10px; }
+  .ph-tab span { font-size: 4.5px; font-weight: 600; color: #aaa; }
+  .ph-tab.ph-active span { color: #c0392b; }
+  .ph-tab.ph-active svg { fill: #c0392b; }
+  .ph-home-bar {
+    width: 28%; height: 3px; background: #1a1a1a; border-radius: 3px;
+    margin: 2px auto 4%; opacity: 0.2; flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════
+     DOWNLOAD / QR SECTION
+     ══════════════════════════════════ */
+  .download-section {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .download-label {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    color: #8b1a1a; text-transform: uppercase; letter-spacing: 1.5px;
+  }
   .qr-box {
-    display: inline-block; border: 2px solid #c9a84c; border-radius: 12px;
-    background: linear-gradient(135deg, #fffdf5, #faf3e0); text-align: center;
-    box-shadow: 0 2px 8px rgba(201,168,76,0.15);
+    border: 3px solid #c9a84c; border-radius: 8px;
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+    background: #fff;
   }
-  .qr-placeholder {
-    background: #fff; display: flex; align-items: center; justify-content: center;
-    color: #bbb; font-weight: 500; margin: 0 auto; border: 1px solid #e0d5c0; border-radius: 6px;
-  }
-  .qr-img { display: block; object-fit: contain; border-radius: 6px; margin: 0 auto; }
-  .scan-label {
-    font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-    color: #fff;
-    background: linear-gradient(135deg, #8b1a1a 0%, #a52a2a 50%, #8b1a1a 100%);
-    border-radius: 6px; display: inline-block;
-  }
-
-  /* ── Store badges ── */
-  .store-badges { display: flex; justify-content: center; gap: 8px; }
+  .qr-box img { width: 100%; height: 100%; object-fit: contain; }
+  .store-badges { display: flex; gap: 6px; }
   .store-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: #1a1a2e; color: #fff; border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.2);
-    text-decoration: none; font-size: inherit;
+    background: #111; color: #fff; border-radius: 6px;
+    display: flex; align-items: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    text-decoration: none;
   }
-  .store-badge svg { width: 20px; height: 20px; fill: #fff; }
-  .badge-text { display: flex; flex-direction: column; line-height: 1.2; }
-  .badge-small { font-size: 60%; opacity: 0.8; }
-  .badge-big { font-weight: 700; }
+  .store-badge svg { flex-shrink: 0; fill: #fff; }
+  .store-badge .badge-text {
+    display: flex; flex-direction: column; line-height: 1.15; text-align: left;
+  }
+  .store-badge .badge-small {
+    font-weight: 400; font-size: 0.5em; opacity: 0.85; letter-spacing: 0.3px;
+  }
+  .store-badge .badge-big { font-weight: 700; font-size: 1em; }
 
-  /* ── Quran verse ── */
+  /* ══════════════════════════════════
+     QURAN VERSE SECTION
+     ══════════════════════════════════ */
   .verse-section {
-    border-top: 1px solid #e0d5c0; border-bottom: 1px solid #e0d5c0;
-    background: rgba(201,168,76,0.04); text-align: center; width: 100%;
+    width: 100%; text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.04);
   }
   .verse-text {
     font-family: 'Playfair Display', serif; font-style: italic;
-    color: #5a4a3a; line-height: 1.6;
+    color: #5a3e2b; line-height: 1.6;
   }
-  .verse-ref { color: #c9a84c; font-weight: 500; }
-
-  /* ── Features list ── */
-  .features-list { list-style: none; width: 100%; }
-  .features-list li { display: flex; align-items: baseline; line-height: 1.5; }
-  .features-list li .bullet {
-    color: #8b1a1a; flex-shrink: 0; margin-right: 8px;
-    font-size: 70%; line-height: inherit;
+  .verse-ref {
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    color: #c9a84c;
   }
-  .features-list li strong { color: #1a1a1a; }
 
-  /* ── Pricing bar ── */
+  /* ══════════════════════════════════
+     FEATURES LIST
+     ══════════════════════════════════ */
+  .features-section { width: 100%; }
+  .features-title {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    text-transform: uppercase; color: #8b1a1a; letter-spacing: 1.5px;
+    text-align: center;
+  }
+  .features-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .feature-item {
+    display: flex; align-items: flex-start; text-align: left;
+  }
+  .feature-icon {
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #c0392b, #e8721d);
+    color: #fff; border-radius: 50%; font-weight: 800;
+  }
+  .feature-item strong {
+    color: #8b1a1a; display: block;
+  }
+  .feature-item span {
+    color: #5a3e2b;
+  }
+
+  /* ══════════════════════════════════
+     PRICING BAR
+     ══════════════════════════════════ */
   .pricing-bar {
-    display: flex; justify-content: center; align-items: center;
-    flex-wrap: wrap; color: #555; width: 100%;
-    border-top: 1px solid #eee; border-bottom: 1px solid #eee;
-  }
-  .pricing-bar .money-icon { margin-right: 4px; }
-  .pricing-bar .sep { margin: 0 8px; color: #c9a84c; }
-  .pricing-bar .highlight { color: #c0392b; font-weight: 700; }
-  .pricing-bar .free { color: #27ae60; font-weight: 700; }
-
-  /* ── CTA Section ── */
-  .cta-section {
-    background: linear-gradient(135deg, #c9a84c 0%, #d4af37 50%, #c9a84c 100%);
-    text-align: center; width: 100%;
-  }
-  .cta-text {
-    font-family: 'Playfair Display', serif; font-style: italic;
-    font-weight: 700; color: #5a1a1a; line-height: 1.35;
-  }
-
-  /* ── Contact bar ── */
-  .contact-bar {
+    width: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
+    text-align: center;
   }
-  .contact-bar a { color: #c0392b; text-decoration: none; font-weight: 500; }
-  .contact-bar .sep { color: #ccc; margin: 0 8px; }
+  .pricing-item {
+    color: #fff; font-weight: 600;
+  }
+  .pricing-item strong {
+    color: #c9a84c; font-weight: 800;
+  }
+  .pricing-sep {
+    color: rgba(255,255,255,0.3); font-weight: 300;
+  }
+  .pricing-note {
+    color: #c9a84c; font-weight: 700; letter-spacing: 0.5px;
+  }
 
-  /* ── Approved stamp ── */
-  .approved-section { text-align: center; }
-  .approved-label {
-    font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #1a1a1a;
+  /* ══════════════════════════════════
+     CTA GOLD BANNER
+     ══════════════════════════════════ */
+  .cta-banner {
+    width: 100%;
+    background: linear-gradient(135deg, #c9a84c 0%, #d4af37 40%, #e8c055 70%, #c9a84c 100%);
+    text-align: center; position: relative;
+  }
+  .cta-banner::before, .cta-banner::after {
+    content: ''; position: absolute; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  }
+  .cta-banner::before { top: 0; }
+  .cta-banner::after { bottom: 0; }
+  .cta-line1 {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: #3a2010;
+  }
+  .cta-line2 {
+    font-family: 'Inter', sans-serif; font-weight: 800;
+    color: #fff; text-transform: uppercase; letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+
+  /* ══════════════════════════════════
+     CONTACT BAR
+     ══════════════════════════════════ */
+  .contact-bar {
+    width: 100%;
+    background: #8b1a1a;
+    text-align: center;
+  }
+  .contact-bar a, .contact-bar span {
+    color: #fff; font-weight: 600; text-decoration: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .contact-sep { opacity: 0.4; }
+
+  /* ══════════════════════════════════
+     APPROVED STAMP
+     ══════════════════════════════════ */
+  .stamp-wrapper {
+    display: flex; justify-content: center;
   }
   .approved-stamp {
-    display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
-    border-radius: 50%; border: 3px double #c0392b;
-    background: linear-gradient(135deg, rgba(192,57,43,0.08), rgba(139,26,26,0.05));
-    color: #c0392b; font-weight: 800; text-transform: uppercase;
-    text-align: center; line-height: 1.15;
-    box-shadow: 0 0 0 2px rgba(192,57,43,0.15), inset 0 0 0 2px rgba(192,57,43,0.1);
-    position: relative;
-  }
-  .approved-stamp::before {
-    content: ''; position: absolute; inset: 4px; border-radius: 50%;
-    border: 1.5px dashed rgba(192,57,43,0.35); pointer-events: none;
-  }
-  .stamp-main { font-family: 'Playfair Display', serif; font-weight: 700; }
-  .stamp-sub { font-family: 'Inter', sans-serif; font-weight: 600; opacity: 0.7; }
-  .stamp-icon { line-height: 1; }
-  .stamp-icon svg { fill: #c0392b; }
-
-  /* ── Bottom accent bar ── */
-  .bottom-accent {
-    width: 100%; position: relative; z-index: 11;
-    background: linear-gradient(90deg, #8b1a1a 0%, #c0392b 30%, #c9a84c 60%, #d4af37 80%, #c9a84c 100%);
-  }
-
-  /* ============================================================
-     A5 (148mm x 210mm)
-     ============================================================ */
-  .a5 { width: 148mm; }
-  .a5 .inner { padding: 22px 20px 18px; gap: 7px; }
-  .a5 .corner { font-size: 14px; }
-
-  .a5 .logo-area { gap: 8px; margin-bottom: 4px; }
-  .a5 .heart-big svg { width: 28px; height: 28px; }
-  .a5 .heart-sm1 { top: -6px; right: -4px; }
-  .a5 .heart-sm1 svg { width: 10px; height: 10px; }
-  .a5 .heart-sm2 { top: -2px; right: -12px; }
-  .a5 .heart-sm2 svg { width: 8px; height: 8px; }
-  .a5 .logo-divider { height: 32px; }
-  .a5 .logo-main-text { font-size: 16pt; letter-spacing: 2px; }
-  .a5 .logo-subtitle-text { font-size: 4.5pt; letter-spacing: 2.5px; margin-top: 1px; }
-
-  .a5 .trust-row { gap: 6px; margin-bottom: 2px; }
-  .a5 .trust-badge { font-size: 5pt; }
-  .a5 .trust-badge .icon { width: 11px; height: 11px; font-size: 6px; }
-
-  .a5 .headline { padding: 8px 16px; }
-  .a5 .headline h2 { font-size: 9pt; }
-
-  .a5 .download-row { gap: 8px; }
-  .a5 .qr-section { margin: 2px 0; }
-  .a5 .qr-box { padding: 6px 10px; border-radius: 8px; }
-  .a5 .qr-placeholder { width: 48px; height: 48px; font-size: 6pt; border-radius: 6px; }
-  .a5 .qr-img { width: 48px; height: 48px; }
-  .a5 .scan-label { font-size: 5.5pt; margin-top: 4px; letter-spacing: 1.5px; padding: 3px 8px; }
-  .a5 .store-badges { margin-top: 4px; gap: 4px; }
-  .a5 .store-badge { padding: 3px 6px; font-size: 5pt; border-radius: 5px; gap: 3px; }
-  .a5 .store-badge svg { width: 12px; height: 12px; }
-
-  .a5 .verse-section { padding: 7px 16px; }
-  .a5 .verse-text { font-size: 5.5pt; }
-  .a5 .verse-ref { font-size: 5pt; margin-top: 2px; }
-
-  .a5 .features-list { padding: 0 6px; }
-  .a5 .features-list li { font-size: 6pt; margin-bottom: 2px; }
-
-  .a5 .pricing-bar { font-size: 5.5pt; padding: 5px 4px; gap: 2px; }
-
-  .a5 .cta-section { padding: 8px 14px; }
-  .a5 .cta-text { font-size: 9pt; }
-
-  .a5 .contact-bar { font-size: 5.5pt; margin-top: 4px; }
-  .a5 .approved-section { margin-top: 4px; }
-  .a5 .approved-label { font-size: 4.5pt; margin-bottom: 3px; }
-  .a5 .approved-stamp { width: 44px; height: 44px; border-width: 2px; }
-  .a5 .stamp-main { font-size: 5.5pt; }
-  .a5 .stamp-sub { font-size: 3.5pt; }
-  .a5 .stamp-icon svg { width: 8px; height: 8px; }
-  .a5 .bottom-accent { height: 4px; }
-
-  /* ============================================================
-     A4 (210mm x 297mm)
-     ============================================================ */
-  .a4 { width: 210mm; }
-  .a4 .inner { padding: 32px 30px 26px; gap: 10px; }
-  .a4 .corner { font-size: 18px; }
-
-  .a4 .logo-area { gap: 12px; margin-bottom: 6px; }
-  .a4 .heart-big svg { width: 40px; height: 40px; }
-  .a4 .heart-sm1 { top: -8px; right: -6px; }
-  .a4 .heart-sm1 svg { width: 14px; height: 14px; }
-  .a4 .heart-sm2 { top: -2px; right: -16px; }
-  .a4 .heart-sm2 svg { width: 10px; height: 10px; }
-  .a4 .logo-divider { height: 44px; }
-  .a4 .logo-main-text { font-size: 22pt; letter-spacing: 3px; }
-  .a4 .logo-subtitle-text { font-size: 6pt; letter-spacing: 3px; margin-top: 2px; }
-
-  .a4 .trust-row { gap: 12px; margin-bottom: 4px; }
-  .a4 .trust-badge { font-size: 6.5pt; }
-  .a4 .trust-badge .icon { width: 15px; height: 15px; font-size: 8px; }
-
-  .a4 .headline { padding: 12px 24px; }
-  .a4 .headline h2 { font-size: 12.5pt; }
-
-  .a4 .download-row { gap: 12px; }
-  .a4 .qr-section { margin: 4px 0; }
-  .a4 .qr-box { padding: 10px 14px; }
-  .a4 .qr-placeholder { width: 68px; height: 68px; font-size: 7pt; border-radius: 8px; }
-  .a4 .qr-img { width: 68px; height: 68px; }
-  .a4 .scan-label { font-size: 7pt; margin-top: 5px; padding: 4px 10px; }
-  .a4 .store-badges { margin-top: 6px; gap: 6px; }
-  .a4 .store-badge { padding: 4px 8px; font-size: 6pt; border-radius: 6px; gap: 4px; }
-  .a4 .store-badge svg { width: 16px; height: 16px; }
-
-  .a4 .verse-section { padding: 10px 24px; }
-  .a4 .verse-text { font-size: 7.5pt; }
-  .a4 .verse-ref { font-size: 6.5pt; margin-top: 3px; }
-
-  .a4 .features-list { padding: 0 12px; }
-  .a4 .features-list li { font-size: 8pt; margin-bottom: 4px; }
-
-  .a4 .pricing-bar { font-size: 7pt; padding: 7px 8px; }
-
-  .a4 .cta-section { padding: 12px 20px; }
-  .a4 .cta-text { font-size: 13pt; }
-
-  .a4 .contact-bar { font-size: 7pt; margin-top: 6px; }
-  .a4 .approved-section { margin-top: 6px; }
-  .a4 .approved-label { font-size: 5.5pt; margin-bottom: 4px; }
-  .a4 .approved-stamp { width: 58px; height: 58px; }
-  .a4 .stamp-main { font-size: 7pt; }
-  .a4 .stamp-sub { font-size: 4.5pt; }
-  .a4 .stamp-icon svg { width: 10px; height: 10px; }
-  .a4 .bottom-accent { height: 5px; }
-
-  /* ============================================================
-     A3 (297mm x 420mm)
-     ============================================================ */
-  .a3 { width: 297mm; }
-  .a3 .inner { padding: 46px 42px 36px; gap: 14px; }
-  .a3 .corner { font-size: 24px; }
-
-  .a3 .logo-area { gap: 16px; margin-bottom: 8px; }
-  .a3 .heart-big svg { width: 56px; height: 56px; }
-  .a3 .heart-sm1 { top: -12px; right: -8px; }
-  .a3 .heart-sm1 svg { width: 20px; height: 20px; }
-  .a3 .heart-sm2 { top: -3px; right: -22px; }
-  .a3 .heart-sm2 svg { width: 14px; height: 14px; }
-  .a3 .logo-divider { height: 60px; }
-  .a3 .logo-main-text { font-size: 32pt; letter-spacing: 4px; }
-  .a3 .logo-subtitle-text { font-size: 8pt; letter-spacing: 4px; margin-top: 3px; }
-
-  .a3 .trust-row { gap: 18px; margin-bottom: 6px; }
-  .a3 .trust-badge { font-size: 9pt; }
-  .a3 .trust-badge .icon { width: 20px; height: 20px; font-size: 11px; }
-
-  .a3 .headline { padding: 18px 34px; }
-  .a3 .headline h2 { font-size: 17pt; }
-
-  .a3 .download-row { gap: 18px; }
-  .a3 .qr-section { margin: 8px 0; }
-  .a3 .qr-box { padding: 14px 20px; }
-  .a3 .qr-placeholder { width: 96px; height: 96px; font-size: 9pt; border-radius: 10px; }
-  .a3 .qr-img { width: 96px; height: 96px; }
-  .a3 .scan-label { font-size: 9.5pt; margin-top: 7px; padding: 5px 14px; }
-  .a3 .store-badges { margin-top: 8px; gap: 8px; }
-  .a3 .store-badge { padding: 6px 10px; font-size: 8pt; border-radius: 7px; gap: 5px; }
-  .a3 .store-badge svg { width: 20px; height: 20px; }
-
-  .a3 .verse-section { padding: 14px 34px; }
-  .a3 .verse-text { font-size: 10.5pt; }
-  .a3 .verse-ref { font-size: 9pt; margin-top: 5px; }
-
-  .a3 .features-list { padding: 0 20px; }
-  .a3 .features-list li { font-size: 11pt; margin-bottom: 7px; }
-
-  .a3 .pricing-bar { font-size: 10pt; padding: 10px 12px; }
-
-  .a3 .cta-section { padding: 18px 30px; }
-  .a3 .cta-text { font-size: 19pt; }
-
-  .a3 .contact-bar { font-size: 10pt; margin-top: 8px; }
-  .a3 .approved-section { margin-top: 8px; }
-  .a3 .approved-label { font-size: 7.5pt; margin-bottom: 5px; }
-  .a3 .approved-stamp { width: 76px; height: 76px; }
-  .a3 .stamp-main { font-size: 9pt; }
-  .a3 .stamp-sub { font-size: 5.5pt; }
-  .a3 .stamp-icon svg { width: 14px; height: 14px; }
-  .a3 .bottom-accent { height: 6px; }
-
-  /* ============================================================
-     A2 (420mm x 594mm)
-     ============================================================ */
-  .a2 { width: 420mm; }
-  .a2 .inner { padding: 64px 58px 50px; gap: 20px; }
-  .a2 .corner { font-size: 32px; }
-
-  .a2 .logo-area { gap: 22px; margin-bottom: 12px; }
-  .a2 .heart-big svg { width: 78px; height: 78px; }
-  .a2 .heart-sm1 { top: -16px; right: -12px; }
-  .a2 .heart-sm1 svg { width: 28px; height: 28px; }
-  .a2 .heart-sm2 { top: -4px; right: -30px; }
-  .a2 .heart-sm2 svg { width: 20px; height: 20px; }
-  .a2 .logo-divider { height: 84px; }
-  .a2 .logo-main-text { font-size: 46pt; letter-spacing: 5px; }
-  .a2 .logo-subtitle-text { font-size: 11pt; letter-spacing: 5px; margin-top: 4px; }
-
-  .a2 .trust-row { gap: 26px; margin-bottom: 8px; }
-  .a2 .trust-badge { font-size: 12pt; }
-  .a2 .trust-badge .icon { width: 28px; height: 28px; font-size: 15px; }
-
-  .a2 .headline { padding: 26px 48px; }
-  .a2 .headline h2 { font-size: 24pt; }
-
-  .a2 .download-row { gap: 24px; }
-  .a2 .qr-section { margin: 12px 0; }
-  .a2 .qr-box { padding: 20px 28px; }
-  .a2 .qr-placeholder { width: 136px; height: 136px; font-size: 12pt; border-radius: 12px; }
-  .a2 .qr-img { width: 136px; height: 136px; }
-  .a2 .scan-label { font-size: 13pt; margin-top: 10px; padding: 7px 20px; }
-  .a2 .store-badges { margin-top: 12px; gap: 10px; }
-  .a2 .store-badge { padding: 8px 14px; font-size: 10pt; border-radius: 8px; gap: 6px; }
-  .a2 .store-badge svg { width: 24px; height: 24px; }
-
-  .a2 .verse-section { padding: 20px 48px; }
-  .a2 .verse-text { font-size: 14.5pt; }
-  .a2 .verse-ref { font-size: 12pt; margin-top: 7px; }
-
-  .a2 .features-list { padding: 0 30px; }
-  .a2 .features-list li { font-size: 15pt; margin-bottom: 10px; }
-
-  .a2 .pricing-bar { font-size: 14pt; padding: 14px 16px; }
-
-  .a2 .cta-section { padding: 26px 44px; }
-  .a2 .cta-text { font-size: 27pt; }
-
-  .a2 .contact-bar { font-size: 14pt; margin-top: 12px; }
-  .a2 .approved-section { margin-top: 12px; }
-  .a2 .approved-label { font-size: 10pt; margin-bottom: 7px; }
-  .a2 .approved-stamp { width: 100px; height: 100px; border-width: 4px; }
-  .a2 .stamp-main { font-size: 12pt; }
-  .a2 .stamp-sub { font-size: 7pt; }
-  .a2 .stamp-icon svg { width: 18px; height: 18px; }
-  .a2 .bottom-accent { height: 8px; }
-
-  /* ── Phone Mockup ── */
-  .phone-mockup {
-    position: relative;
-    background: #1a1a1a;
-    border-radius: 30px;
-    padding: 7px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
-    margin: 0 auto;
-  }
-  .phone-mockup::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -3px;
-    width: 3px;
-    height: 40px;
-    transform: translateY(-50%);
-    background: #333;
-    border-radius: 0 2px 2px 0;
-  }
-  .phone-btn-left {
-    position: absolute;
-    left: -3px;
-    width: 3px;
-    background: #333;
-    border-radius: 2px 0 0 2px;
-  }
-  .phone-btn-mute { top: 18%; height: 16px; }
-  .phone-btn-vol1 { top: 28%; height: 28px; }
-  .phone-btn-vol2 { top: 38%; height: 28px; }
-  .phone-island {
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30%;
-    height: 14px;
-    background: #1a1a1a;
-    border-radius: 10px;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 6px;
-  }
-  .phone-island-cam {
-    width: 5px;
-    height: 5px;
-    background: radial-gradient(circle, #1a3a5a, #0a1a2a);
+    border: 3px solid #c0392b;
     border-radius: 50%;
-    border: 1px solid #2a2a2a;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    background: rgba(192,57,43,0.05);
+    transform: rotate(-8deg);
+    box-shadow: 0 0 0 2px rgba(192,57,43,0.12), inset 0 0 0 2px rgba(192,57,43,0.12);
   }
-  .phone-screen {
-    position: relative;
-    background: #FFFFFF;
-    border-radius: 28px;
-    overflow: hidden;
-    aspect-ratio: 9 / 19.5;
-    display: flex;
-    flex-direction: column;
+  .stamp-heart {
+    color: #c0392b;
   }
-  .phone-screen::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%, transparent 100%);
-    z-index: 15;
-    pointer-events: none;
+  .stamp-main {
+    font-weight: 800; color: #8b1a1a;
+    text-transform: uppercase; letter-spacing: 1px; line-height: 1.1;
   }
-  .phone-status {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6% 7% 0;
-    font-size: 28%;
-    font-weight: 600;
-    color: #111827;
-  }
-  .phone-status-icons {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-  }
-  .ph-body {
-    flex: 1;
-    padding: 8% 7% 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .ph-tab-bar {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 2% 2% 0;
-    border-top: 1px solid #E2E8F0;
-    background: #FFFFFF;
-  }
-  .ph-tab {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1px;
-    font-size: 20%;
-    color: #9CA3AF;
-  }
-  .ph-tab-active { color: #D32F2F; }
-  .ph-tab-active span { color: #D32F2F; }
-  .ph-home-bar {
-    width: 30%;
-    height: 3px;
-    background: #111827;
-    border-radius: 2px;
-    margin: 3% auto 2%;
+  .stamp-sub {
+    font-weight: 700; color: #c0392b;
+    text-transform: uppercase; letter-spacing: 0.5px;
   }
 
-  /* Per-size phone dimensions */
-  .a5 .phone-mockup { display: none; }
-  .a4 .phone-mockup { width: 130px; border-radius: 34px; padding: 8px; }
-  .a4 .phone-screen { border-radius: 22px; }
-  .a3 .phone-mockup { width: 155px; border-radius: 40px; padding: 10px; }
-  .a3 .phone-screen { border-radius: 26px; }
-  .a2 .phone-mockup { width: 180px; border-radius: 44px; padding: 12px; }
-  .a2 .phone-screen { border-radius: 28px; }
+  /* ══════════════════════════════════
+     BOTTOM ACCENT BAR
+     ══════════════════════════════════ */
+  .bottom-accent {
+    width: 100%;
+    background: linear-gradient(90deg, #c0392b, #e8721d, #c9a84c, #e8721d, #c0392b);
+  }
 
+  /* ════════════════════════════════════════════════
+     SIZE 1: A5 LEAFLET (148mm wide)
+     ════════════════════════════════════════════════ */
+  #banner-a5 .page { width: 560px; }
+  #banner-a5 .inner { padding: 22px 20px; gap: 7px; }
+  #banner-a5 .corner { font-size: 14px; }
+
+  /* Logo */
+  #banner-a5 .logo-area { gap: 6px; margin-bottom: 2px; }
+  #banner-a5 .heart-big svg { width: 28px; height: 28px; }
+  #banner-a5 .heart-sm1 { top: -6px; right: -8px; }
+  #banner-a5 .heart-sm1 svg { width: 8px; height: 8px; }
+  #banner-a5 .heart-sm2 { bottom: -4px; left: -6px; }
+  #banner-a5 .heart-sm2 svg { width: 6px; height: 6px; }
+  #banner-a5 .logo-divider { height: 24px; margin: 0 6px; }
+  #banner-a5 .logo-main-text { font-size: 16pt; }
+  #banner-a5 .logo-subtitle { font-size: 4pt; letter-spacing: 1px; }
+
+  /* Trust badges */
+  #banner-a5 .trust-badges { gap: 4px; }
+  #banner-a5 .trust-badge { padding: 2px 6px; font-size: 5pt; gap: 3px; }
+  #banner-a5 .trust-badge-icon { width: 12px; height: 12px; font-size: 6px; }
+
+  /* Headline */
+  #banner-a5 .headline-banner { padding: 6px 12px; }
+  #banner-a5 .headline-banner h1 { font-size: 9pt; }
+
+  /* Subtitle */
+  #banner-a5 .subtitle { font-size: 6pt; }
+
+  /* Download */
+  #banner-a5 .download-section { gap: 4px; }
+  #banner-a5 .download-label { font-size: 5pt; }
+  #banner-a5 .qr-box { width: 48px; height: 48px; }
+  #banner-a5 .store-badge { padding: 3px 8px; font-size: 6px; gap: 3px; }
+  #banner-a5 .store-badge svg { width: 10px; height: 10px; }
+
+  /* Verse */
+  #banner-a5 .verse-section { padding: 6px 16px; }
+  #banner-a5 .verse-text { font-size: 5.5pt; }
+  #banner-a5 .verse-ref { font-size: 5pt; margin-top: 2px; }
+
+  /* Features */
+  #banner-a5 .features-title { font-size: 5pt; margin-bottom: 4px; }
+  #banner-a5 .features-grid { gap: 5px; }
+  #banner-a5 .feature-item { gap: 4px; }
+  #banner-a5 .feature-icon { width: 14px; height: 14px; font-size: 6px; }
+  #banner-a5 .feature-item strong { font-size: 5.5pt; }
+  #banner-a5 .feature-item span { font-size: 5pt; }
+
+  /* Pricing */
+  #banner-a5 .pricing-bar { padding: 5px 10px; gap: 6px; }
+  #banner-a5 .pricing-item { font-size: 5.5pt; }
+  #banner-a5 .pricing-sep { font-size: 5pt; }
+  #banner-a5 .pricing-note { font-size: 5pt; }
+
+  /* CTA */
+  #banner-a5 .cta-banner { padding: 6px 12px; }
+  #banner-a5 .cta-line1 { font-size: 5.5pt; }
+  #banner-a5 .cta-line2 { font-size: 9pt; }
+
+  /* Contact */
+  #banner-a5 .contact-bar { padding: 4px 10px; }
+  #banner-a5 .contact-bar span, #banner-a5 .contact-bar a { font-size: 5.5pt; }
+
+  /* Stamp */
+  #banner-a5 .approved-stamp { width: 52px; height: 52px; }
+  #banner-a5 .stamp-heart { font-size: 8px; }
+  #banner-a5 .stamp-main { font-size: 6px; }
+  #banner-a5 .stamp-sub { font-size: 4.5px; }
+
+  /* Bottom accent */
+  #banner-a5 .bottom-accent { height: 4px; }
+
+  /* ════════════════════════════════════════════════
+     SIZE 2: A4 FLYER (210mm wide) — DEFAULT
+     ════════════════════════════════════════════════ */
+  #banner-a4 .page { width: 794px; }
+  #banner-a4 .inner { padding: 32px 30px; gap: 10px; }
+  #banner-a4 .corner { font-size: 18px; }
+
+  /* Logo */
+  #banner-a4 .logo-area { gap: 8px; margin-bottom: 4px; }
+  #banner-a4 .heart-big svg { width: 40px; height: 40px; }
+  #banner-a4 .heart-sm1 { top: -8px; right: -12px; }
+  #banner-a4 .heart-sm1 svg { width: 12px; height: 12px; }
+  #banner-a4 .heart-sm2 { bottom: -6px; left: -8px; }
+  #banner-a4 .heart-sm2 svg { width: 9px; height: 9px; }
+  #banner-a4 .logo-divider { height: 34px; margin: 0 8px; }
+  #banner-a4 .logo-main-text { font-size: 22pt; }
+  #banner-a4 .logo-subtitle { font-size: 5.5pt; letter-spacing: 1.5px; }
+
+  /* Trust badges */
+  #banner-a4 .trust-badges { gap: 6px; }
+  #banner-a4 .trust-badge { padding: 3px 8px; font-size: 6.5pt; gap: 4px; }
+  #banner-a4 .trust-badge-icon { width: 16px; height: 16px; font-size: 8px; }
+
+  /* Headline */
+  #banner-a4 .headline-banner { padding: 8px 16px; }
+  #banner-a4 .headline-banner h1 { font-size: 12.5pt; }
+
+  /* Subtitle */
+  #banner-a4 .subtitle { font-size: 8pt; }
+
+  /* Phone mockup */
+  #banner-a4 .phone-mockup { width: 120px; border-radius: 18px; padding: 6px; }
+  #banner-a4 .phone-mockup::before { border-radius: 18px; }
+  #banner-a4 .phone-screen { border-radius: 13px; }
+  #banner-a4 .phone-island { width: 32px; height: 10px; top: 8px; border-radius: 6px; }
+  #banner-a4 .phone-island-cam { width: 5px; height: 5px; margin-right: 4px; }
+
+  /* Download */
+  #banner-a4 .download-section { gap: 6px; }
+  #banner-a4 .download-label { font-size: 6.5pt; }
+  #banner-a4 .qr-box { width: 68px; height: 68px; }
+  #banner-a4 .store-badge { padding: 4px 10px; font-size: 8px; gap: 4px; }
+  #banner-a4 .store-badge svg { width: 12px; height: 12px; }
+
+  /* Verse */
+  #banner-a4 .verse-section { padding: 8px 24px; }
+  #banner-a4 .verse-text { font-size: 7pt; }
+  #banner-a4 .verse-ref { font-size: 6pt; margin-top: 3px; }
+
+  /* Features */
+  #banner-a4 .features-title { font-size: 6.5pt; margin-bottom: 6px; }
+  #banner-a4 .features-grid { gap: 7px; }
+  #banner-a4 .feature-item { gap: 6px; }
+  #banner-a4 .feature-icon { width: 18px; height: 18px; font-size: 8px; }
+  #banner-a4 .feature-item strong { font-size: 7pt; }
+  #banner-a4 .feature-item span { font-size: 6pt; }
+
+  /* Pricing */
+  #banner-a4 .pricing-bar { padding: 7px 14px; gap: 10px; }
+  #banner-a4 .pricing-item { font-size: 7pt; }
+  #banner-a4 .pricing-sep { font-size: 7pt; }
+  #banner-a4 .pricing-note { font-size: 6.5pt; }
+
+  /* CTA */
+  #banner-a4 .cta-banner { padding: 8px 16px; }
+  #banner-a4 .cta-line1 { font-size: 7pt; }
+  #banner-a4 .cta-line2 { font-size: 13pt; }
+
+  /* Contact */
+  #banner-a4 .contact-bar { padding: 5px 14px; }
+  #banner-a4 .contact-bar span, #banner-a4 .contact-bar a { font-size: 7pt; }
+
+  /* Stamp */
+  #banner-a4 .approved-stamp { width: 68px; height: 68px; }
+  #banner-a4 .stamp-heart { font-size: 10px; }
+  #banner-a4 .stamp-main { font-size: 8px; }
+  #banner-a4 .stamp-sub { font-size: 6px; }
+
+  /* Bottom accent */
+  #banner-a4 .bottom-accent { height: 5px; }
+
+  /* ════════════════════════════════════════════════
+     SIZE 3: A3 POSTER (297mm wide)
+     ════════════════════════════════════════════════ */
+  #banner-a3 .page { width: 1122px; }
+  #banner-a3 .inner { padding: 46px 42px; gap: 14px; }
+  #banner-a3 .corner { font-size: 24px; }
+
+  /* Logo */
+  #banner-a3 .logo-area { gap: 10px; margin-bottom: 6px; }
+  #banner-a3 .heart-big svg { width: 56px; height: 56px; }
+  #banner-a3 .heart-sm1 { top: -10px; right: -14px; }
+  #banner-a3 .heart-sm1 svg { width: 16px; height: 16px; }
+  #banner-a3 .heart-sm2 { bottom: -8px; left: -10px; }
+  #banner-a3 .heart-sm2 svg { width: 12px; height: 12px; }
+  #banner-a3 .logo-divider { height: 48px; margin: 0 10px; }
+  #banner-a3 .logo-main-text { font-size: 32pt; }
+  #banner-a3 .logo-subtitle { font-size: 7pt; letter-spacing: 2px; }
+
+  /* Trust badges */
+  #banner-a3 .trust-badges { gap: 8px; }
+  #banner-a3 .trust-badge { padding: 4px 10px; font-size: 9pt; gap: 5px; }
+  #banner-a3 .trust-badge-icon { width: 20px; height: 20px; font-size: 10px; }
+
+  /* Headline */
+  #banner-a3 .headline-banner { padding: 12px 24px; }
+  #banner-a3 .headline-banner h1 { font-size: 17pt; }
+
+  /* Subtitle */
+  #banner-a3 .subtitle { font-size: 10pt; }
+
+  /* Phone mockup */
+  #banner-a3 .phone-mockup { width: 145px; border-radius: 22px; padding: 7px; }
+  #banner-a3 .phone-mockup::before { border-radius: 22px; }
+  #banner-a3 .phone-screen { border-radius: 16px; }
+  #banner-a3 .phone-island { width: 38px; height: 12px; top: 9px; border-radius: 7px; }
+  #banner-a3 .phone-island-cam { width: 6px; height: 6px; margin-right: 5px; }
+
+  /* Download */
+  #banner-a3 .download-section { gap: 8px; }
+  #banner-a3 .download-label { font-size: 8pt; }
+  #banner-a3 .qr-box { width: 96px; height: 96px; }
+  #banner-a3 .store-badge { padding: 5px 14px; font-size: 10px; gap: 5px; }
+  #banner-a3 .store-badge svg { width: 14px; height: 14px; }
+
+  /* Verse */
+  #banner-a3 .verse-section { padding: 12px 36px; }
+  #banner-a3 .verse-text { font-size: 9pt; }
+  #banner-a3 .verse-ref { font-size: 8pt; margin-top: 4px; }
+
+  /* Features */
+  #banner-a3 .features-title { font-size: 9pt; margin-bottom: 8px; }
+  #banner-a3 .features-grid { gap: 10px; }
+  #banner-a3 .feature-item { gap: 8px; }
+  #banner-a3 .feature-icon { width: 24px; height: 24px; font-size: 10px; }
+  #banner-a3 .feature-item strong { font-size: 9.5pt; }
+  #banner-a3 .feature-item span { font-size: 8pt; }
+
+  /* Pricing */
+  #banner-a3 .pricing-bar { padding: 10px 20px; gap: 14px; }
+  #banner-a3 .pricing-item { font-size: 9.5pt; }
+  #banner-a3 .pricing-sep { font-size: 9pt; }
+  #banner-a3 .pricing-note { font-size: 9pt; }
+
+  /* CTA */
+  #banner-a3 .cta-banner { padding: 12px 24px; }
+  #banner-a3 .cta-line1 { font-size: 10pt; }
+  #banner-a3 .cta-line2 { font-size: 19pt; }
+
+  /* Contact */
+  #banner-a3 .contact-bar { padding: 7px 20px; }
+  #banner-a3 .contact-bar span, #banner-a3 .contact-bar a { font-size: 9pt; }
+
+  /* Stamp */
+  #banner-a3 .approved-stamp { width: 88px; height: 88px; border-width: 4px; }
+  #banner-a3 .stamp-heart { font-size: 14px; }
+  #banner-a3 .stamp-main { font-size: 10px; }
+  #banner-a3 .stamp-sub { font-size: 7px; }
+
+  /* Bottom accent */
+  #banner-a3 .bottom-accent { height: 6px; }
+
+  /* ════════════════════════════════════════════════
+     SIZE 4: A2 LARGE POSTER (420mm wide)
+     ════════════════════════════════════════════════ */
+  #banner-a2 .page { width: 1587px; }
+  #banner-a2 .inner { padding: 64px 58px; gap: 20px; }
+  #banner-a2 .corner { font-size: 32px; }
+
+  /* Logo */
+  #banner-a2 .logo-area { gap: 14px; margin-bottom: 8px; }
+  #banner-a2 .heart-big svg { width: 78px; height: 78px; }
+  #banner-a2 .heart-sm1 { top: -14px; right: -18px; }
+  #banner-a2 .heart-sm1 svg { width: 22px; height: 22px; }
+  #banner-a2 .heart-sm2 { bottom: -10px; left: -14px; }
+  #banner-a2 .heart-sm2 svg { width: 16px; height: 16px; }
+  #banner-a2 .logo-divider { height: 66px; margin: 0 14px; }
+  #banner-a2 .logo-main-text { font-size: 46pt; }
+  #banner-a2 .logo-subtitle { font-size: 10pt; letter-spacing: 2.5px; }
+
+  /* Trust badges */
+  #banner-a2 .trust-badges { gap: 10px; }
+  #banner-a2 .trust-badge { padding: 5px 14px; font-size: 12pt; gap: 6px; }
+  #banner-a2 .trust-badge-icon { width: 26px; height: 26px; font-size: 13px; }
+
+  /* Headline */
+  #banner-a2 .headline-banner { padding: 16px 32px; }
+  #banner-a2 .headline-banner h1 { font-size: 24pt; }
+
+  /* Subtitle */
+  #banner-a2 .subtitle { font-size: 14pt; }
+
+  /* Phone mockup */
+  #banner-a2 .phone-mockup { width: 170px; border-radius: 26px; padding: 8px; }
+  #banner-a2 .phone-mockup::before { border-radius: 26px; }
+  #banner-a2 .phone-screen { border-radius: 19px; }
+  #banner-a2 .phone-island { width: 44px; height: 14px; top: 10px; border-radius: 8px; }
+  #banner-a2 .phone-island-cam { width: 7px; height: 7px; margin-right: 6px; }
+
+  /* Download */
+  #banner-a2 .download-section { gap: 10px; }
+  #banner-a2 .download-label { font-size: 10pt; }
+  #banner-a2 .qr-box { width: 136px; height: 136px; }
+  #banner-a2 .store-badge { padding: 7px 18px; font-size: 13px; gap: 6px; }
+  #banner-a2 .store-badge svg { width: 16px; height: 16px; }
+
+  /* Verse */
+  #banner-a2 .verse-section { padding: 16px 48px; }
+  #banner-a2 .verse-text { font-size: 12pt; }
+  #banner-a2 .verse-ref { font-size: 10pt; margin-top: 6px; }
+
+  /* Features */
+  #banner-a2 .features-title { font-size: 12pt; margin-bottom: 12px; }
+  #banner-a2 .features-grid { gap: 14px; }
+  #banner-a2 .feature-item { gap: 10px; }
+  #banner-a2 .feature-icon { width: 32px; height: 32px; font-size: 14px; }
+  #banner-a2 .feature-item strong { font-size: 13pt; }
+  #banner-a2 .feature-item span { font-size: 11pt; }
+
+  /* Pricing */
+  #banner-a2 .pricing-bar { padding: 14px 28px; gap: 18px; }
+  #banner-a2 .pricing-item { font-size: 13pt; }
+  #banner-a2 .pricing-sep { font-size: 12pt; }
+  #banner-a2 .pricing-note { font-size: 12pt; }
+
+  /* CTA */
+  #banner-a2 .cta-banner { padding: 18px 36px; }
+  #banner-a2 .cta-line1 { font-size: 14pt; }
+  #banner-a2 .cta-line2 { font-size: 27pt; }
+
+  /* Contact */
+  #banner-a2 .contact-bar { padding: 10px 28px; }
+  #banner-a2 .contact-bar span, #banner-a2 .contact-bar a { font-size: 12pt; }
+
+  /* Stamp */
+  #banner-a2 .approved-stamp { width: 110px; height: 110px; border-width: 4px; }
+  #banner-a2 .stamp-heart { font-size: 18px; }
+  #banner-a2 .stamp-main { font-size: 13px; }
+  #banner-a2 .stamp-sub { font-size: 9px; }
+
+  /* Bottom accent */
+  #banner-a2 .bottom-accent { height: 8px; }
+
+  /* ══════════════════════════════════
+     PRINT STYLES
+     ══════════════════════════════════ */
   @media print {
-    .toolbar { display: none; }
-    .banner-wrapper { display: flex !important; page-break-after: always; }
-    .page { box-shadow: none; margin: 0; }
+    .toolbar { display: none !important; }
+    .banner-wrapper { padding: 0 !important; }
+    .banner-wrapper.active { display: flex !important; }
+    body { background: #fff !important; }
+    .page { box-shadow: none !important; }
   }
 </style>
 </head>
 <body>
 
-<!-- ── Toolbar ── -->
+<!-- ══════════════════════════════════
+     TOOLBAR
+     ══════════════════════════════════ -->
 <div class="toolbar">
-  <button class="size-btn" onclick="showBanner('a5')">A5 <small>Leaflet</small></button>
-  <button class="size-btn active" onclick="showBanner('a4')">A4 <small>Flyer</small></button>
-  <button class="size-btn" onclick="showBanner('a3')">A3 <small>Poster</small></button>
-  <button class="size-btn" onclick="showBanner('a2')">A2 <small>Large</small></button>
+  <span class="toolbar-label">Banner Size:</span>
+  <button class="size-btn" onclick="showBanner('a5')">A5 Leaflet</button>
+  <button class="size-btn active" onclick="showBanner('a4')">A4 Flyer</button>
+  <button class="size-btn" onclick="showBanner('a3')">A3 Poster</button>
+  <button class="size-btn" onclick="showBanner('a2')">A2 Large</button>
+  <div class="toolbar-hint">Select a size to preview. A4 is the default.</div>
 </div>
 
-<!-- ========== A5 ========== -->
+<!-- ══════════════════════════════════
+     A5 LEAFLET (no phone mockup)
+     ══════════════════════════════════ -->
 <div class="banner-wrapper" id="banner-a5">
-<div class="page a5">
+<div class="page">
   <!-- Decorative orbs -->
   <div class="deco-orb deco-orb-1"></div>
   <div class="deco-orb deco-orb-2"></div>
   <div class="deco-orb deco-orb-3"></div>
   <div class="deco-orb deco-orb-4"></div>
+  <!-- Corner ornaments -->
+  <span class="corner corner-tl">&#10021;</span>
+  <span class="corner corner-tr">&#10021;</span>
+  <span class="corner corner-bl">&#10021;</span>
+  <span class="corner corner-br">&#10021;</span>
 
-  <span class="corner corner-tl">&#10053;</span>
-  <span class="corner corner-tr">&#10053;</span>
-  <span class="corner corner-bl">&#10053;</span>
-  <span class="corner corner-br">&#10053;</span>
   <div class="inner">
-
-    <!-- Logo -->
+    <!-- 1. Logo -->
     <div class="logo-area">
       <div class="logo-hearts">
-        <span class="heart-big"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-        <span class="heart-sm1"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-        <span class="heart-sm2"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <div class="heart-big"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="heart-sm1"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="heart-sm2"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
       </div>
       <div class="logo-divider"></div>
       <div class="logo-text-group">
-        <div class="logo-main-text">PAIRED <span class="bracket">[</span>M<span class="bracket">]</span></div>
-        <div class="logo-subtitle-text">Unite by Meeting</div>
+        <div class="logo-main-text">PAIRED <span>[M]</span></div>
+        <div class="logo-subtitle">Unite by Meeting</div>
       </div>
     </div>
 
-    <!-- Trust badges -->
-    <div class="trust-row">
-      <span class="trust-badge"><span class="icon">&#10003;</span> Shariah-Compliant</span>
-
-      <span class="trust-badge"><span class="icon">&#10003;</span> Verified Profiles</span>
-      <span class="trust-badge"><span class="icon"><svg viewBox="0 0 24 24" style="width:7px;height:7px;fill:#fff;vertical-align:middle"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> Coordinator Support</span>
-      <span class="trust-badge"><span class="icon" style="background:#27ae60">&#163;</span> Pay As You Go</span>
+    <!-- 2. Trust badges -->
+    <div class="trust-badges">
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#27ae60;">&#10003;</span> Shariah-Compliant</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#c0392b;">&#10003;</span> Verified Profiles</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#27ae60;">&#9829;</span> Coordinator Support</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#c9a84c;">&#163;</span> Pay As You Go</div>
     </div>
 
-    <!-- Headline -->
-    <div class="headline">
-      <h2>Find Your Spouse the Halal Way &mdash; Coordinator-guided meetings from first call to nikah.</h2>
+    <!-- 3. Headline -->
+    <div class="headline-banner">
+      <h1>Find Your Spouse the Halal Way</h1>
     </div>
 
-    <!-- QR -->
-    <div class="qr-section">
-      <div class="qr-box">
-        <img class="qr-img" src="images/qr-pairedm.png" alt="QR Code">
-        <div class="scan-label">Download Now</div>
-      </div>
-      <!-- Store badges -->
+    <!-- 4. Subtitle -->
+    <p class="subtitle">Coordinator-guided meetings from first call to nikah.</p>
+
+    <!-- 5. No phone mockup for A5 -->
+
+    <!-- 6. Download section -->
+    <div class="download-section">
+      <div class="download-label">Download Now</div>
+      <div class="qr-box"><img src="images/qr-pairedm.png" alt="QR Code"></div>
       <div class="store-badges">
-        <a href="#" class="store-badge">
+        <div class="store-badge">
           <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <span class="badge-text"><span class="badge-small">Download on the</span><span class="badge-big">App Store</span></span>
-        </a>
-        <a href="#" class="store-badge">
+          <div class="badge-text"><span class="badge-small">Download on the</span><span class="badge-big">App Store</span></div>
+        </div>
+        <div class="store-badge">
           <svg viewBox="0 0 24 24" fill="none"><path d="M3.61 1.7c-.4.4-.61.98-.61 1.7v17.2c0 .72.21 1.3.61 1.7l.09.08L14.1 12V11.8L3.7 1.62l-.09.08z" fill="#4285F4"/><path d="M17.6 15.5L14.1 12v-.2l3.5-3.5.08.05 4.14 2.35c1.18.67 1.18 1.77 0 2.44l-4.14 2.35-.08.01z" fill="#FFBC00"/><path d="M17.68 15.44L14.1 11.9 3.61 22.4c.39.41.93.43 1.53.09l12.54-7.05z" fill="#EA4335"/><path d="M17.68 8.36L5.14 1.31C4.54.97 4 .99 3.61 1.4L14.1 11.9l3.58-3.54z" fill="#34A853"/></svg>
-          <span class="badge-text"><span class="badge-small">Get it on</span><span class="badge-big">Google Play</span></span>
-        </a>
+          <div class="badge-text"><span class="badge-small">GET IT ON</span><span class="badge-big">Google Play</span></div>
+        </div>
       </div>
     </div>
 
-    <!-- Verse -->
+    <!-- 7. Quran verse -->
     <div class="verse-section">
-      <div class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</div>
-      <div class="verse-ref">&mdash; Surah Ar-Rum (30:21)</div>
+      <p class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</p>
+      <p class="verse-ref">— Surah Ar-Rum (30:21)</p>
     </div>
 
-    <!-- Features -->
-    <ul class="features-list">
-      <li><span class="bullet">&#9654;</span><span><strong>Coordinator on Every Call</strong> &mdash; a dedicated guide from first introduction to nikah.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>3 Structured Meeting Levels</strong> &mdash; Level 1 online call, Level 2 video, Level 3 in-person with Wali.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>ID-Verified Profiles</strong> &mdash; every user undergoes identity verification for your safety.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Pay As You Go</strong> &mdash; no subscriptions, only &pound;5&ndash;&pound;10 per meeting. No hidden fees.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Free Intro Call</strong> &mdash; book a free video call with a coordinator to learn how it works.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Scholar-Endorsed</strong> &mdash; approved by Mufti Yusuf Dhanka, Moulana Sheikh A.R. Patel &amp; more.</span></li>
-    </ul>
+    <!-- 8. Features list -->
+    <div class="features-section">
+      <div class="features-title">Why Choose PairedM?</div>
+      <div class="features-grid">
+        <div class="feature-item"><div class="feature-icon">1</div><div><strong>Coordinator on Every Call</strong><span>A dedicated guide from first introduction to nikah.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">2</div><div><strong>3 Structured Meeting Levels</strong><span>Level 1 online call, Level 2 video, Level 3 in-person with Wali.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">3</div><div><strong>ID-Verified Profiles</strong><span>Every user undergoes identity verification for your safety.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">4</div><div><strong>Pay As You Go</strong><span>No subscriptions, only £5–£10 per meeting. No hidden fees.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">5</div><div><strong>Free Intro Call</strong><span>Book a free video call with a coordinator to learn how it works.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">6</div><div><strong>Scholar-Endorsed</strong><span>Approved by Mufti Yusuf Dhanka, Moulana Sheikh A.R. Patel &amp; more.</span></div></div>
+      </div>
+    </div>
 
-    <!-- Pricing -->
+    <!-- 9. Pricing bar -->
     <div class="pricing-bar">
-      <span>Level 1: <span class="highlight">&pound;5</span></span>
-      <span class="sep">&bull;</span>
-      <span>Level 2: <span class="highlight">&pound;7</span></span>
-      <span class="sep">&bull;</span>
-      <span>Level 3: <span class="highlight">&pound;10</span></span>
-      <span class="sep">&bull;</span>
-      <span><span class="free">No Subscriptions</span></span>
+      <span class="pricing-item">Level 1: <strong>£5</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-item">Level 2: <strong>£7</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-item">Level 3: <strong>£10</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-note">No Subscriptions</span>
     </div>
 
-    <!-- CTA -->
-    <div class="cta-section">
-      <div class="cta-text">Start your journey towards a blessed marriage today.<br>Book Your Free Intro Call!</div>
+    <!-- 10. CTA gold banner -->
+    <div class="cta-banner">
+      <div class="cta-line1">Start your journey towards a blessed marriage today.</div>
+      <div class="cta-line2">Book Your Free Intro Call!</div>
     </div>
 
-    <!-- Contact -->
+    <!-- 11. Contact bar -->
     <div class="contact-bar">
-      <a href="#">&#128279; www.pairedm.co.uk</a>
-      <span class="sep">|</span>
-      <a href="#">&#9993; info@pairedm.co.uk</a>
+      <span>www.pairedm.co.uk</span>
+      <span class="contact-sep"> | </span>
+      <span>info@pairedm.co.uk</span>
     </div>
 
-    <!-- Approved stamp -->
-    <div class="approved-section">
-      <div class="approved-label">Islamic Guidance</div>
+    <!-- 12. Approved stamp -->
+    <div class="stamp-wrapper">
       <div class="approved-stamp">
-        <span class="stamp-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <span class="stamp-heart">&#9829;</span>
         <span class="stamp-main">Approved</span>
         <span class="stamp-sub">By Scholars</span>
       </div>
     </div>
+
+    <!-- 13. Bottom accent bar -->
+    <div class="bottom-accent"></div>
   </div>
-  <!-- Bottom accent bar -->
-  <div class="bottom-accent"></div>
 </div>
 </div>
 
-<!-- ========== A4 (default active) ========== -->
+<!-- ══════════════════════════════════
+     A4 FLYER (with phone mockup) — DEFAULT
+     ══════════════════════════════════ -->
 <div class="banner-wrapper active" id="banner-a4">
-<div class="page a4">
-  <!-- Decorative orbs -->
+<div class="page">
   <div class="deco-orb deco-orb-1"></div>
   <div class="deco-orb deco-orb-2"></div>
   <div class="deco-orb deco-orb-3"></div>
   <div class="deco-orb deco-orb-4"></div>
+  <span class="corner corner-tl">&#10021;</span>
+  <span class="corner corner-tr">&#10021;</span>
+  <span class="corner corner-bl">&#10021;</span>
+  <span class="corner corner-br">&#10021;</span>
 
-  <span class="corner corner-tl">&#10053;</span>
-  <span class="corner corner-tr">&#10053;</span>
-  <span class="corner corner-bl">&#10053;</span>
-  <span class="corner corner-br">&#10053;</span>
   <div class="inner">
+    <!-- 1. Logo -->
     <div class="logo-area">
       <div class="logo-hearts">
-        <span class="heart-big"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-        <span class="heart-sm1"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-        <span class="heart-sm2"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <div class="heart-big"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="heart-sm1"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="heart-sm2"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
       </div>
       <div class="logo-divider"></div>
       <div class="logo-text-group">
-        <div class="logo-main-text">PAIRED <span class="bracket">[</span>M<span class="bracket">]</span></div>
-        <div class="logo-subtitle-text">Unite by Meeting</div>
+        <div class="logo-main-text">PAIRED <span>[M]</span></div>
+        <div class="logo-subtitle">Unite by Meeting</div>
       </div>
-    </div>
-    <div class="trust-row">
-      <span class="trust-badge"><span class="icon">&#10003;</span> Shariah-Compliant</span>
-
-      <span class="trust-badge"><span class="icon">&#10003;</span> Verified Profiles</span>
-      <span class="trust-badge"><span class="icon"><svg viewBox="0 0 24 24" style="width:9px;height:9px;fill:#fff;vertical-align:middle"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> Coordinator Support</span>
-      <span class="trust-badge"><span class="icon" style="background:#27ae60">&#163;</span> Pay As You Go</span>
-    </div>
-    <div class="headline">
-      <h2>Find Your Spouse the Halal Way &mdash; Coordinator-guided meetings from first call to nikah.</h2>
     </div>
 
-    <div class="download-row">
-      <!-- Phone Mockup -->
-      <div class="phone-mockup">
-        <div class="phone-btn-left phone-btn-mute"></div>
-        <div class="phone-btn-left phone-btn-vol1"></div>
-        <div class="phone-btn-left phone-btn-vol2"></div>
-        <div class="phone-screen">
-          <div class="phone-island"><div class="phone-island-cam"></div></div>
-          <div class="phone-status">
-            <span>9:41</span>
-            <div class="phone-status-icons">
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="#111827"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 00-6 0zm-4-4l2 2a7.074 7.074 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="#111827"><path d="M2 22h20V2z"/></svg>
-              <svg width="10" height="8" viewBox="0 0 28 14" fill="none"><rect x="0" y="1" width="24" height="12" rx="2" stroke="#111827" stroke-width="1.5"/><rect x="2" y="3" width="18" height="8" rx="1" fill="#111827"/><path d="M26 5v4a2 2 0 000-4z" fill="#111827"/></svg>
-            </div>
+    <!-- 2. Trust badges -->
+    <div class="trust-badges">
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#27ae60;">&#10003;</span> Shariah-Compliant</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#c0392b;">&#10003;</span> Verified Profiles</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#27ae60;">&#9829;</span> Coordinator Support</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#c9a84c;">&#163;</span> Pay As You Go</div>
+    </div>
+
+    <!-- 3. Headline -->
+    <div class="headline-banner">
+      <h1>Find Your Spouse the Halal Way</h1>
+    </div>
+
+    <!-- 4. Subtitle -->
+    <p class="subtitle">Coordinator-guided meetings from first call to nikah.</p>
+
+    <!-- 5. Phone mockup -->
+    <div class="phone-mockup">
+      <div class="phone-island"><div class="phone-island-cam"></div></div>
+      <div class="phone-screen">
+        <div class="ph-status">
+          <span>9:41</span>
+          <div class="ph-status-icons">
+            <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
           </div>
-          <div class="ph-body">
-            <div style="font-size:30%;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:1%">How It Works</div>
-            <div style="font-weight:700;font-size:50%;color:#111827;margin-bottom:3%;line-height:1.2">3 Meeting Levels</div>
-            <!-- Level 1 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0;border-bottom:1px solid #F1F5F9">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(211,47,47,0.12),rgba(211,47,47,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#D32F2F" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 1 &middot; Online Call</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Supervised call with coordinator</div></div>
-              <div style="font-size:28%;font-weight:700;color:#D32F2F">&pound;5</div>
-            </div>
-            <!-- Level 2 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0;border-bottom:1px solid #F1F5F9">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(232,114,12,0.12),rgba(232,114,12,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#E8720C" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 2 &middot; Video Call</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Video with coordinator support</div></div>
-              <div style="font-size:28%;font-weight:700;color:#E8720C">&pound;7</div>
-            </div>
-            <!-- Level 3 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(39,174,96,0.12),rgba(39,174,96,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 3 &middot; In Person</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Meet with Wali &amp; coordinator</div></div>
-              <div style="font-size:28%;font-weight:700;color:#27ae60">&pound;10</div>
-            </div>
-            <!-- No subs note -->
-            <div style="text-align:center;font-size:22%;color:#D32F2F;font-weight:600;margin-top:3%;padding:2% 0;background:rgba(211,47,47,0.06);border-radius:8px">No Subscriptions &middot; Pay Per Meeting</div>
-          </div>
-          <div class="ph-tab-bar">
-            <div class="ph-tab ph-tab-active"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D32F2F" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Home</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><span>Discover</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Matches</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Meetings</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></div>
-          </div>
-          <div class="ph-home-bar"></div>
         </div>
+        <div class="ph-body">
+          <div class="ph-label">How It Works</div>
+          <div class="ph-title">3 Meeting Levels</div>
+          <div class="ph-levels">
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(192,57,43,0.12);">
+                <svg viewBox="0 0 24 24" fill="#c0392b"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 1</span><span class="ph-level-type">Online Call</span></div>
+              <div class="ph-level-price">£5</div>
+            </div>
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(232,114,29,0.12);">
+                <svg viewBox="0 0 24 24" fill="#e8721d"><path d="M17 10.5V7a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1v-3.5l4 4v-11l-4 4z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 2</span><span class="ph-level-type">Video Call</span></div>
+              <div class="ph-level-price">£7</div>
+            </div>
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(39,174,96,0.12);">
+                <svg viewBox="0 0 24 24" fill="#27ae60"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5C23 14.17 18.33 13 16 13z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 3</span><span class="ph-level-type">In Person</span></div>
+              <div class="ph-level-price">£10</div>
+            </div>
+          </div>
+          <div class="ph-note">No Subscriptions · Pay Per Meeting</div>
+        </div>
+        <div class="ph-tab-bar">
+          <div class="ph-tab ph-active">
+            <svg viewBox="0 0 24 24" fill="#c0392b"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Home</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <span>Discover</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>Matches</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            <span>Meetings</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span>Profile</span>
+          </div>
+        </div>
+        <div class="ph-home-bar"></div>
       </div>
-      <div class="download-right">
-        <div class="qr-section">
-          <div class="qr-box">
-            <img class="qr-img" src="images/qr-pairedm.png" alt="QR Code">
-            <div class="scan-label">Download Now</div>
-          </div>
-          <div class="store-badges">
-            <a href="#" class="store-badge">
-              <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              <span class="badge-text"><span class="badge-small">Download on the</span><span class="badge-big">App Store</span></span>
-            </a>
-            <a href="#" class="store-badge">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M3.61 1.7c-.4.4-.61.98-.61 1.7v17.2c0 .72.21 1.3.61 1.7l.09.08L14.1 12V11.8L3.7 1.62l-.09.08z" fill="#4285F4"/><path d="M17.6 15.5L14.1 12v-.2l3.5-3.5.08.05 4.14 2.35c1.18.67 1.18 1.77 0 2.44l-4.14 2.35-.08.01z" fill="#FFBC00"/><path d="M17.68 15.44L14.1 11.9 3.61 22.4c.39.41.93.43 1.53.09l12.54-7.05z" fill="#EA4335"/><path d="M17.68 8.36L5.14 1.31C4.54.97 4 .99 3.61 1.4L14.1 11.9l3.58-3.54z" fill="#34A853"/></svg>
-              <span class="badge-text"><span class="badge-small">Get it on</span><span class="badge-big">Google Play</span></span>
-            </a>
-          </div>
+    </div>
+
+    <!-- 6. Download section -->
+    <div class="download-section">
+      <div class="download-label">Download Now</div>
+      <div class="qr-box"><img src="images/qr-pairedm.png" alt="QR Code"></div>
+      <div class="store-badges">
+        <div class="store-badge">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="badge-text"><span class="badge-small">Download on the</span><span class="badge-big">App Store</span></div>
+        </div>
+        <div class="store-badge">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3.61 1.7c-.4.4-.61.98-.61 1.7v17.2c0 .72.21 1.3.61 1.7l.09.08L14.1 12V11.8L3.7 1.62l-.09.08z" fill="#4285F4"/><path d="M17.6 15.5L14.1 12v-.2l3.5-3.5.08.05 4.14 2.35c1.18.67 1.18 1.77 0 2.44l-4.14 2.35-.08.01z" fill="#FFBC00"/><path d="M17.68 15.44L14.1 11.9 3.61 22.4c.39.41.93.43 1.53.09l12.54-7.05z" fill="#EA4335"/><path d="M17.68 8.36L5.14 1.31C4.54.97 4 .99 3.61 1.4L14.1 11.9l3.58-3.54z" fill="#34A853"/></svg>
+          <div class="badge-text"><span class="badge-small">GET IT ON</span><span class="badge-big">Google Play</span></div>
         </div>
       </div>
     </div>
+
+    <!-- 7. Quran verse -->
     <div class="verse-section">
-      <div class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</div>
-      <div class="verse-ref">&mdash; Surah Ar-Rum (30:21)</div>
+      <p class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</p>
+      <p class="verse-ref">— Surah Ar-Rum (30:21)</p>
     </div>
-    <ul class="features-list">
-      <li><span class="bullet">&#9654;</span><span><strong>Coordinator on Every Call</strong> &mdash; a dedicated guide from first introduction to nikah.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>3 Structured Meeting Levels</strong> &mdash; Level 1 online call, Level 2 video, Level 3 in-person with Wali.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>ID-Verified Profiles</strong> &mdash; every user undergoes identity verification for your safety.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Pay As You Go</strong> &mdash; no subscriptions, only &pound;5&ndash;&pound;10 per meeting. No hidden fees.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Free Intro Call</strong> &mdash; book a free video call with a coordinator to learn how it works.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Scholar-Endorsed</strong> &mdash; approved by Mufti Yusuf Dhanka, Moulana Sheikh A.R. Patel &amp; more.</span></li>
-    </ul>
+
+    <!-- 8. Features list -->
+    <div class="features-section">
+      <div class="features-title">Why Choose PairedM?</div>
+      <div class="features-grid">
+        <div class="feature-item"><div class="feature-icon">1</div><div><strong>Coordinator on Every Call</strong><span>A dedicated guide from first introduction to nikah.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">2</div><div><strong>3 Structured Meeting Levels</strong><span>Level 1 online call, Level 2 video, Level 3 in-person with Wali.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">3</div><div><strong>ID-Verified Profiles</strong><span>Every user undergoes identity verification for your safety.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">4</div><div><strong>Pay As You Go</strong><span>No subscriptions, only £5–£10 per meeting. No hidden fees.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">5</div><div><strong>Free Intro Call</strong><span>Book a free video call with a coordinator to learn how it works.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">6</div><div><strong>Scholar-Endorsed</strong><span>Approved by Mufti Yusuf Dhanka, Moulana Sheikh A.R. Patel &amp; more.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 9. Pricing bar -->
     <div class="pricing-bar">
-      <span>Level 1: <span class="highlight">&pound;5</span></span>
-      <span class="sep">&bull;</span>
-      <span>Level 2: <span class="highlight">&pound;7</span></span>
-      <span class="sep">&bull;</span>
-      <span>Level 3: <span class="highlight">&pound;10</span></span>
-      <span class="sep">&bull;</span>
-      <span><span class="free">No Subscriptions</span></span>
+      <span class="pricing-item">Level 1: <strong>£5</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-item">Level 2: <strong>£7</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-item">Level 3: <strong>£10</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-note">No Subscriptions</span>
     </div>
-    <div class="cta-section">
-      <div class="cta-text">Start your journey towards a blessed marriage today.<br>Book Your Free Intro Call!</div>
+
+    <!-- 10. CTA gold banner -->
+    <div class="cta-banner">
+      <div class="cta-line1">Start your journey towards a blessed marriage today.</div>
+      <div class="cta-line2">Book Your Free Intro Call!</div>
     </div>
+
+    <!-- 11. Contact bar -->
     <div class="contact-bar">
-      <a href="#">&#128279; www.pairedm.co.uk</a>
-      <span class="sep">|</span>
-      <a href="#">&#9993; info@pairedm.co.uk</a>
+      <span>www.pairedm.co.uk</span>
+      <span class="contact-sep"> | </span>
+      <span>info@pairedm.co.uk</span>
     </div>
-    <div class="approved-section">
-      <div class="approved-label">Islamic Guidance</div>
+
+    <!-- 12. Approved stamp -->
+    <div class="stamp-wrapper">
       <div class="approved-stamp">
-        <span class="stamp-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <span class="stamp-heart">&#9829;</span>
         <span class="stamp-main">Approved</span>
         <span class="stamp-sub">By Scholars</span>
       </div>
     </div>
+
+    <!-- 13. Bottom accent bar -->
+    <div class="bottom-accent"></div>
   </div>
-  <div class="bottom-accent"></div>
 </div>
 </div>
 
-<!-- ========== A3 ========== -->
+<!-- ══════════════════════════════════
+     A3 POSTER (with phone mockup)
+     ══════════════════════════════════ -->
 <div class="banner-wrapper" id="banner-a3">
-<div class="page a3">
-  <!-- Decorative orbs -->
+<div class="page">
   <div class="deco-orb deco-orb-1"></div>
   <div class="deco-orb deco-orb-2"></div>
   <div class="deco-orb deco-orb-3"></div>
   <div class="deco-orb deco-orb-4"></div>
+  <span class="corner corner-tl">&#10021;</span>
+  <span class="corner corner-tr">&#10021;</span>
+  <span class="corner corner-bl">&#10021;</span>
+  <span class="corner corner-br">&#10021;</span>
 
-  <span class="corner corner-tl">&#10053;</span>
-  <span class="corner corner-tr">&#10053;</span>
-  <span class="corner corner-bl">&#10053;</span>
-  <span class="corner corner-br">&#10053;</span>
   <div class="inner">
+    <!-- 1. Logo -->
     <div class="logo-area">
       <div class="logo-hearts">
-        <span class="heart-big"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-        <span class="heart-sm1"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-        <span class="heart-sm2"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <div class="heart-big"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="heart-sm1"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="heart-sm2"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
       </div>
       <div class="logo-divider"></div>
       <div class="logo-text-group">
-        <div class="logo-main-text">PAIRED <span class="bracket">[</span>M<span class="bracket">]</span></div>
-        <div class="logo-subtitle-text">Unite by Meeting</div>
+        <div class="logo-main-text">PAIRED <span>[M]</span></div>
+        <div class="logo-subtitle">Unite by Meeting</div>
       </div>
-    </div>
-    <div class="trust-row">
-      <span class="trust-badge"><span class="icon">&#10003;</span> Shariah-Compliant</span>
-
-      <span class="trust-badge"><span class="icon">&#10003;</span> Verified Profiles</span>
-      <span class="trust-badge"><span class="icon"><svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:#fff;vertical-align:middle"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> Coordinator Support</span>
-      <span class="trust-badge"><span class="icon" style="background:#27ae60">&#163;</span> Pay As You Go</span>
-    </div>
-    <div class="headline">
-      <h2>Find Your Spouse the Halal Way &mdash; Coordinator-guided meetings from first call to nikah.</h2>
     </div>
 
-    <div class="download-row">
-      <!-- Phone Mockup -->
-      <div class="phone-mockup">
-        <div class="phone-btn-left phone-btn-mute"></div>
-        <div class="phone-btn-left phone-btn-vol1"></div>
-        <div class="phone-btn-left phone-btn-vol2"></div>
-        <div class="phone-screen">
-          <div class="phone-island"><div class="phone-island-cam"></div></div>
-          <div class="phone-status">
-            <span>9:41</span>
-            <div class="phone-status-icons">
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="#111827"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 00-6 0zm-4-4l2 2a7.074 7.074 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="#111827"><path d="M2 22h20V2z"/></svg>
-              <svg width="10" height="8" viewBox="0 0 28 14" fill="none"><rect x="0" y="1" width="24" height="12" rx="2" stroke="#111827" stroke-width="1.5"/><rect x="2" y="3" width="18" height="8" rx="1" fill="#111827"/><path d="M26 5v4a2 2 0 000-4z" fill="#111827"/></svg>
-            </div>
+    <!-- 2. Trust badges -->
+    <div class="trust-badges">
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#27ae60;">&#10003;</span> Shariah-Compliant</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#c0392b;">&#10003;</span> Verified Profiles</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#27ae60;">&#9829;</span> Coordinator Support</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#c9a84c;">&#163;</span> Pay As You Go</div>
+    </div>
+
+    <!-- 3. Headline -->
+    <div class="headline-banner">
+      <h1>Find Your Spouse the Halal Way</h1>
+    </div>
+
+    <!-- 4. Subtitle -->
+    <p class="subtitle">Coordinator-guided meetings from first call to nikah.</p>
+
+    <!-- 5. Phone mockup -->
+    <div class="phone-mockup">
+      <div class="phone-island"><div class="phone-island-cam"></div></div>
+      <div class="phone-screen">
+        <div class="ph-status">
+          <span>9:41</span>
+          <div class="ph-status-icons">
+            <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
           </div>
-          <div class="ph-body">
-            <div style="font-size:30%;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:1%">How It Works</div>
-            <div style="font-weight:700;font-size:50%;color:#111827;margin-bottom:3%;line-height:1.2">3 Meeting Levels</div>
-            <!-- Level 1 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0;border-bottom:1px solid #F1F5F9">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(211,47,47,0.12),rgba(211,47,47,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#D32F2F" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 1 &middot; Online Call</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Supervised call with coordinator</div></div>
-              <div style="font-size:28%;font-weight:700;color:#D32F2F">&pound;5</div>
-            </div>
-            <!-- Level 2 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0;border-bottom:1px solid #F1F5F9">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(232,114,12,0.12),rgba(232,114,12,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#E8720C" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 2 &middot; Video Call</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Video with coordinator support</div></div>
-              <div style="font-size:28%;font-weight:700;color:#E8720C">&pound;7</div>
-            </div>
-            <!-- Level 3 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(39,174,96,0.12),rgba(39,174,96,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 3 &middot; In Person</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Meet with Wali &amp; coordinator</div></div>
-              <div style="font-size:28%;font-weight:700;color:#27ae60">&pound;10</div>
-            </div>
-            <!-- No subs note -->
-            <div style="text-align:center;font-size:22%;color:#D32F2F;font-weight:600;margin-top:3%;padding:2% 0;background:rgba(211,47,47,0.06);border-radius:8px">No Subscriptions &middot; Pay Per Meeting</div>
-          </div>
-          <div class="ph-tab-bar">
-            <div class="ph-tab ph-tab-active"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D32F2F" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Home</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><span>Discover</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Matches</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Meetings</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></div>
-          </div>
-          <div class="ph-home-bar"></div>
         </div>
+        <div class="ph-body">
+          <div class="ph-label">How It Works</div>
+          <div class="ph-title">3 Meeting Levels</div>
+          <div class="ph-levels">
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(192,57,43,0.12);">
+                <svg viewBox="0 0 24 24" fill="#c0392b"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 1</span><span class="ph-level-type">Online Call</span></div>
+              <div class="ph-level-price">£5</div>
+            </div>
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(232,114,29,0.12);">
+                <svg viewBox="0 0 24 24" fill="#e8721d"><path d="M17 10.5V7a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1v-3.5l4 4v-11l-4 4z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 2</span><span class="ph-level-type">Video Call</span></div>
+              <div class="ph-level-price">£7</div>
+            </div>
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(39,174,96,0.12);">
+                <svg viewBox="0 0 24 24" fill="#27ae60"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5C23 14.17 18.33 13 16 13z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 3</span><span class="ph-level-type">In Person</span></div>
+              <div class="ph-level-price">£10</div>
+            </div>
+          </div>
+          <div class="ph-note">No Subscriptions · Pay Per Meeting</div>
+        </div>
+        <div class="ph-tab-bar">
+          <div class="ph-tab ph-active">
+            <svg viewBox="0 0 24 24" fill="#c0392b"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Home</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <span>Discover</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>Matches</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            <span>Meetings</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span>Profile</span>
+          </div>
+        </div>
+        <div class="ph-home-bar"></div>
       </div>
-      <div class="download-right">
-        <div class="qr-section">
-          <div class="qr-box">
-            <img class="qr-img" src="images/qr-pairedm.png" alt="QR Code">
-            <div class="scan-label">Download Now</div>
-          </div>
-          <div class="store-badges">
-            <a href="#" class="store-badge">
-              <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              <span class="badge-text"><span class="badge-small">Download on the</span><span class="badge-big">App Store</span></span>
-            </a>
-            <a href="#" class="store-badge">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M3.61 1.7c-.4.4-.61.98-.61 1.7v17.2c0 .72.21 1.3.61 1.7l.09.08L14.1 12V11.8L3.7 1.62l-.09.08z" fill="#4285F4"/><path d="M17.6 15.5L14.1 12v-.2l3.5-3.5.08.05 4.14 2.35c1.18.67 1.18 1.77 0 2.44l-4.14 2.35-.08.01z" fill="#FFBC00"/><path d="M17.68 15.44L14.1 11.9 3.61 22.4c.39.41.93.43 1.53.09l12.54-7.05z" fill="#EA4335"/><path d="M17.68 8.36L5.14 1.31C4.54.97 4 .99 3.61 1.4L14.1 11.9l3.58-3.54z" fill="#34A853"/></svg>
-              <span class="badge-text"><span class="badge-small">Get it on</span><span class="badge-big">Google Play</span></span>
-            </a>
-          </div>
+    </div>
+
+    <!-- 6. Download section -->
+    <div class="download-section">
+      <div class="download-label">Download Now</div>
+      <div class="qr-box"><img src="images/qr-pairedm.png" alt="QR Code"></div>
+      <div class="store-badges">
+        <div class="store-badge">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="badge-text"><span class="badge-small">Download on the</span><span class="badge-big">App Store</span></div>
+        </div>
+        <div class="store-badge">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3.61 1.7c-.4.4-.61.98-.61 1.7v17.2c0 .72.21 1.3.61 1.7l.09.08L14.1 12V11.8L3.7 1.62l-.09.08z" fill="#4285F4"/><path d="M17.6 15.5L14.1 12v-.2l3.5-3.5.08.05 4.14 2.35c1.18.67 1.18 1.77 0 2.44l-4.14 2.35-.08.01z" fill="#FFBC00"/><path d="M17.68 15.44L14.1 11.9 3.61 22.4c.39.41.93.43 1.53.09l12.54-7.05z" fill="#EA4335"/><path d="M17.68 8.36L5.14 1.31C4.54.97 4 .99 3.61 1.4L14.1 11.9l3.58-3.54z" fill="#34A853"/></svg>
+          <div class="badge-text"><span class="badge-small">GET IT ON</span><span class="badge-big">Google Play</span></div>
         </div>
       </div>
     </div>
+
+    <!-- 7. Quran verse -->
     <div class="verse-section">
-      <div class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</div>
-      <div class="verse-ref">&mdash; Surah Ar-Rum (30:21)</div>
+      <p class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</p>
+      <p class="verse-ref">— Surah Ar-Rum (30:21)</p>
     </div>
-    <ul class="features-list">
-      <li><span class="bullet">&#9654;</span><span><strong>Coordinator on Every Call</strong> &mdash; a dedicated guide from first introduction to nikah.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>3 Structured Meeting Levels</strong> &mdash; Level 1 online call, Level 2 video, Level 3 in-person with Wali.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>ID-Verified Profiles</strong> &mdash; every user undergoes identity verification for your safety.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Pay As You Go</strong> &mdash; no subscriptions, only &pound;5&ndash;&pound;10 per meeting. No hidden fees.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Free Intro Call</strong> &mdash; book a free video call with a coordinator to learn how it works.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Scholar-Endorsed</strong> &mdash; approved by Mufti Yusuf Dhanka, Moulana Sheikh A.R. Patel &amp; more.</span></li>
-    </ul>
+
+    <!-- 8. Features list -->
+    <div class="features-section">
+      <div class="features-title">Why Choose PairedM?</div>
+      <div class="features-grid">
+        <div class="feature-item"><div class="feature-icon">1</div><div><strong>Coordinator on Every Call</strong><span>A dedicated guide from first introduction to nikah.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">2</div><div><strong>3 Structured Meeting Levels</strong><span>Level 1 online call, Level 2 video, Level 3 in-person with Wali.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">3</div><div><strong>ID-Verified Profiles</strong><span>Every user undergoes identity verification for your safety.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">4</div><div><strong>Pay As You Go</strong><span>No subscriptions, only £5–£10 per meeting. No hidden fees.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">5</div><div><strong>Free Intro Call</strong><span>Book a free video call with a coordinator to learn how it works.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">6</div><div><strong>Scholar-Endorsed</strong><span>Approved by Mufti Yusuf Dhanka, Moulana Sheikh A.R. Patel &amp; more.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 9. Pricing bar -->
     <div class="pricing-bar">
-      <span>Level 1: <span class="highlight">&pound;5</span></span>
-      <span class="sep">&bull;</span>
-      <span>Level 2: <span class="highlight">&pound;7</span></span>
-      <span class="sep">&bull;</span>
-      <span>Level 3: <span class="highlight">&pound;10</span></span>
-      <span class="sep">&bull;</span>
-      <span><span class="free">No Subscriptions</span></span>
+      <span class="pricing-item">Level 1: <strong>£5</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-item">Level 2: <strong>£7</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-item">Level 3: <strong>£10</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-note">No Subscriptions</span>
     </div>
-    <div class="cta-section">
-      <div class="cta-text">Start your journey towards a blessed marriage today.<br>Book Your Free Intro Call!</div>
+
+    <!-- 10. CTA gold banner -->
+    <div class="cta-banner">
+      <div class="cta-line1">Start your journey towards a blessed marriage today.</div>
+      <div class="cta-line2">Book Your Free Intro Call!</div>
     </div>
+
+    <!-- 11. Contact bar -->
     <div class="contact-bar">
-      <a href="#">&#128279; www.pairedm.co.uk</a>
-      <span class="sep">|</span>
-      <a href="#">&#9993; info@pairedm.co.uk</a>
+      <span>www.pairedm.co.uk</span>
+      <span class="contact-sep"> | </span>
+      <span>info@pairedm.co.uk</span>
     </div>
-    <div class="approved-section">
-      <div class="approved-label">Islamic Guidance</div>
+
+    <!-- 12. Approved stamp -->
+    <div class="stamp-wrapper">
       <div class="approved-stamp">
-        <span class="stamp-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <span class="stamp-heart">&#9829;</span>
         <span class="stamp-main">Approved</span>
         <span class="stamp-sub">By Scholars</span>
       </div>
     </div>
+
+    <!-- 13. Bottom accent bar -->
+    <div class="bottom-accent"></div>
   </div>
-  <div class="bottom-accent"></div>
 </div>
 </div>
 
-<!-- ========== A2 ========== -->
+<!-- ══════════════════════════════════
+     A2 LARGE POSTER (with phone mockup)
+     ══════════════════════════════════ -->
 <div class="banner-wrapper" id="banner-a2">
-<div class="page a2">
-  <!-- Decorative orbs -->
+<div class="page">
   <div class="deco-orb deco-orb-1"></div>
   <div class="deco-orb deco-orb-2"></div>
   <div class="deco-orb deco-orb-3"></div>
   <div class="deco-orb deco-orb-4"></div>
+  <span class="corner corner-tl">&#10021;</span>
+  <span class="corner corner-tr">&#10021;</span>
+  <span class="corner corner-bl">&#10021;</span>
+  <span class="corner corner-br">&#10021;</span>
 
-  <span class="corner corner-tl">&#10053;</span>
-  <span class="corner corner-tr">&#10053;</span>
-  <span class="corner corner-bl">&#10053;</span>
-  <span class="corner corner-br">&#10053;</span>
   <div class="inner">
+    <!-- 1. Logo -->
     <div class="logo-area">
       <div class="logo-hearts">
-        <span class="heart-big"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-        <span class="heart-sm1"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-        <span class="heart-sm2"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <div class="heart-big"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="heart-sm1"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="heart-sm2"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
       </div>
       <div class="logo-divider"></div>
       <div class="logo-text-group">
-        <div class="logo-main-text">PAIRED <span class="bracket">[</span>M<span class="bracket">]</span></div>
-        <div class="logo-subtitle-text">Unite by Meeting</div>
+        <div class="logo-main-text">PAIRED <span>[M]</span></div>
+        <div class="logo-subtitle">Unite by Meeting</div>
       </div>
-    </div>
-    <div class="trust-row">
-      <span class="trust-badge"><span class="icon">&#10003;</span> Shariah-Compliant</span>
-
-      <span class="trust-badge"><span class="icon">&#10003;</span> Verified Profiles</span>
-      <span class="trust-badge"><span class="icon"><svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:#fff;vertical-align:middle"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> Coordinator Support</span>
-      <span class="trust-badge"><span class="icon" style="background:#27ae60">&#163;</span> Pay As You Go</span>
-    </div>
-    <div class="headline">
-      <h2>Find Your Spouse the Halal Way &mdash; Coordinator-guided meetings from first call to nikah.</h2>
     </div>
 
-    <div class="download-row">
-      <!-- Phone Mockup -->
-      <div class="phone-mockup">
-        <div class="phone-btn-left phone-btn-mute"></div>
-        <div class="phone-btn-left phone-btn-vol1"></div>
-        <div class="phone-btn-left phone-btn-vol2"></div>
-        <div class="phone-screen">
-          <div class="phone-island"><div class="phone-island-cam"></div></div>
-          <div class="phone-status">
-            <span>9:41</span>
-            <div class="phone-status-icons">
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="#111827"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 00-6 0zm-4-4l2 2a7.074 7.074 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="#111827"><path d="M2 22h20V2z"/></svg>
-              <svg width="10" height="8" viewBox="0 0 28 14" fill="none"><rect x="0" y="1" width="24" height="12" rx="2" stroke="#111827" stroke-width="1.5"/><rect x="2" y="3" width="18" height="8" rx="1" fill="#111827"/><path d="M26 5v4a2 2 0 000-4z" fill="#111827"/></svg>
-            </div>
+    <!-- 2. Trust badges -->
+    <div class="trust-badges">
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#27ae60;">&#10003;</span> Shariah-Compliant</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#c0392b;">&#10003;</span> Verified Profiles</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#27ae60;">&#9829;</span> Coordinator Support</div>
+      <div class="trust-badge"><span class="trust-badge-icon" style="color:#c9a84c;">&#163;</span> Pay As You Go</div>
+    </div>
+
+    <!-- 3. Headline -->
+    <div class="headline-banner">
+      <h1>Find Your Spouse the Halal Way</h1>
+    </div>
+
+    <!-- 4. Subtitle -->
+    <p class="subtitle">Coordinator-guided meetings from first call to nikah.</p>
+
+    <!-- 5. Phone mockup -->
+    <div class="phone-mockup">
+      <div class="phone-island"><div class="phone-island-cam"></div></div>
+      <div class="phone-screen">
+        <div class="ph-status">
+          <span>9:41</span>
+          <div class="ph-status-icons">
+            <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
           </div>
-          <div class="ph-body">
-            <div style="font-size:30%;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:1%">How It Works</div>
-            <div style="font-weight:700;font-size:50%;color:#111827;margin-bottom:3%;line-height:1.2">3 Meeting Levels</div>
-            <!-- Level 1 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0;border-bottom:1px solid #F1F5F9">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(211,47,47,0.12),rgba(211,47,47,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#D32F2F" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 1 &middot; Online Call</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Supervised call with coordinator</div></div>
-              <div style="font-size:28%;font-weight:700;color:#D32F2F">&pound;5</div>
-            </div>
-            <!-- Level 2 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0;border-bottom:1px solid #F1F5F9">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(232,114,12,0.12),rgba(232,114,12,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#E8720C" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 2 &middot; Video Call</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Video with coordinator support</div></div>
-              <div style="font-size:28%;font-weight:700;color:#E8720C">&pound;7</div>
-            </div>
-            <!-- Level 3 -->
-            <div style="display:flex;align-items:center;gap:3%;padding:2.5% 0">
-              <div style="width:13%;aspect-ratio:1;background:linear-gradient(135deg,rgba(39,174,96,0.12),rgba(39,174,96,0.04));border-radius:25%;display:flex;align-items:center;justify-content:center"><svg style="width:50%;height:50%" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-              <div style="flex:1"><div style="font-size:28%;font-weight:700;color:#111827">Level 3 &middot; In Person</div><div style="font-size:22%;color:#9CA3AF;margin-top:1%">Meet with Wali &amp; coordinator</div></div>
-              <div style="font-size:28%;font-weight:700;color:#27ae60">&pound;10</div>
-            </div>
-            <!-- No subs note -->
-            <div style="text-align:center;font-size:22%;color:#D32F2F;font-weight:600;margin-top:3%;padding:2% 0;background:rgba(211,47,47,0.06);border-radius:8px">No Subscriptions &middot; Pay Per Meeting</div>
-          </div>
-          <div class="ph-tab-bar">
-            <div class="ph-tab ph-tab-active"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D32F2F" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>Home</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><span>Discover</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Matches</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Meetings</span></div>
-            <div class="ph-tab"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></div>
-          </div>
-          <div class="ph-home-bar"></div>
         </div>
+        <div class="ph-body">
+          <div class="ph-label">How It Works</div>
+          <div class="ph-title">3 Meeting Levels</div>
+          <div class="ph-levels">
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(192,57,43,0.12);">
+                <svg viewBox="0 0 24 24" fill="#c0392b"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 1</span><span class="ph-level-type">Online Call</span></div>
+              <div class="ph-level-price">£5</div>
+            </div>
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(232,114,29,0.12);">
+                <svg viewBox="0 0 24 24" fill="#e8721d"><path d="M17 10.5V7a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1v-3.5l4 4v-11l-4 4z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 2</span><span class="ph-level-type">Video Call</span></div>
+              <div class="ph-level-price">£7</div>
+            </div>
+            <div class="ph-level">
+              <div class="ph-level-icon" style="background:rgba(39,174,96,0.12);">
+                <svg viewBox="0 0 24 24" fill="#27ae60"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5C23 14.17 18.33 13 16 13z"/></svg>
+              </div>
+              <div class="ph-level-text"><span class="ph-level-name">Level 3</span><span class="ph-level-type">In Person</span></div>
+              <div class="ph-level-price">£10</div>
+            </div>
+          </div>
+          <div class="ph-note">No Subscriptions · Pay Per Meeting</div>
+        </div>
+        <div class="ph-tab-bar">
+          <div class="ph-tab ph-active">
+            <svg viewBox="0 0 24 24" fill="#c0392b"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Home</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <span>Discover</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>Matches</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            <span>Meetings</span>
+          </div>
+          <div class="ph-tab">
+            <svg viewBox="0 0 24 24" fill="#aaa"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span>Profile</span>
+          </div>
+        </div>
+        <div class="ph-home-bar"></div>
       </div>
-      <div class="download-right">
-        <div class="qr-section">
-          <div class="qr-box">
-            <img class="qr-img" src="images/qr-pairedm.png" alt="QR Code">
-            <div class="scan-label">Download Now</div>
-          </div>
-          <div class="store-badges">
-            <a href="#" class="store-badge">
-              <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              <span class="badge-text"><span class="badge-small">Download on the</span><span class="badge-big">App Store</span></span>
-            </a>
-            <a href="#" class="store-badge">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M3.61 1.7c-.4.4-.61.98-.61 1.7v17.2c0 .72.21 1.3.61 1.7l.09.08L14.1 12V11.8L3.7 1.62l-.09.08z" fill="#4285F4"/><path d="M17.6 15.5L14.1 12v-.2l3.5-3.5.08.05 4.14 2.35c1.18.67 1.18 1.77 0 2.44l-4.14 2.35-.08.01z" fill="#FFBC00"/><path d="M17.68 15.44L14.1 11.9 3.61 22.4c.39.41.93.43 1.53.09l12.54-7.05z" fill="#EA4335"/><path d="M17.68 8.36L5.14 1.31C4.54.97 4 .99 3.61 1.4L14.1 11.9l3.58-3.54z" fill="#34A853"/></svg>
-              <span class="badge-text"><span class="badge-small">Get it on</span><span class="badge-big">Google Play</span></span>
-            </a>
-          </div>
+    </div>
+
+    <!-- 6. Download section -->
+    <div class="download-section">
+      <div class="download-label">Download Now</div>
+      <div class="qr-box"><img src="images/qr-pairedm.png" alt="QR Code"></div>
+      <div class="store-badges">
+        <div class="store-badge">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="badge-text"><span class="badge-small">Download on the</span><span class="badge-big">App Store</span></div>
+        </div>
+        <div class="store-badge">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3.61 1.7c-.4.4-.61.98-.61 1.7v17.2c0 .72.21 1.3.61 1.7l.09.08L14.1 12V11.8L3.7 1.62l-.09.08z" fill="#4285F4"/><path d="M17.6 15.5L14.1 12v-.2l3.5-3.5.08.05 4.14 2.35c1.18.67 1.18 1.77 0 2.44l-4.14 2.35-.08.01z" fill="#FFBC00"/><path d="M17.68 15.44L14.1 11.9 3.61 22.4c.39.41.93.43 1.53.09l12.54-7.05z" fill="#EA4335"/><path d="M17.68 8.36L5.14 1.31C4.54.97 4 .99 3.61 1.4L14.1 11.9l3.58-3.54z" fill="#34A853"/></svg>
+          <div class="badge-text"><span class="badge-small">GET IT ON</span><span class="badge-big">Google Play</span></div>
         </div>
       </div>
     </div>
+
+    <!-- 7. Quran verse -->
     <div class="verse-section">
-      <div class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</div>
-      <div class="verse-ref">&mdash; Surah Ar-Rum (30:21)</div>
+      <p class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</p>
+      <p class="verse-ref">— Surah Ar-Rum (30:21)</p>
     </div>
-    <ul class="features-list">
-      <li><span class="bullet">&#9654;</span><span><strong>Coordinator on Every Call</strong> &mdash; a dedicated guide from first introduction to nikah.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>3 Structured Meeting Levels</strong> &mdash; Level 1 online call, Level 2 video, Level 3 in-person with Wali.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>ID-Verified Profiles</strong> &mdash; every user undergoes identity verification for your safety.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Pay As You Go</strong> &mdash; no subscriptions, only &pound;5&ndash;&pound;10 per meeting. No hidden fees.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Free Intro Call</strong> &mdash; book a free video call with a coordinator to learn how it works.</span></li>
-      <li><span class="bullet">&#9654;</span><span><strong>Scholar-Endorsed</strong> &mdash; approved by Mufti Yusuf Dhanka, Moulana Sheikh A.R. Patel &amp; more.</span></li>
-    </ul>
+
+    <!-- 8. Features list -->
+    <div class="features-section">
+      <div class="features-title">Why Choose PairedM?</div>
+      <div class="features-grid">
+        <div class="feature-item"><div class="feature-icon">1</div><div><strong>Coordinator on Every Call</strong><span>A dedicated guide from first introduction to nikah.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">2</div><div><strong>3 Structured Meeting Levels</strong><span>Level 1 online call, Level 2 video, Level 3 in-person with Wali.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">3</div><div><strong>ID-Verified Profiles</strong><span>Every user undergoes identity verification for your safety.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">4</div><div><strong>Pay As You Go</strong><span>No subscriptions, only £5–£10 per meeting. No hidden fees.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">5</div><div><strong>Free Intro Call</strong><span>Book a free video call with a coordinator to learn how it works.</span></div></div>
+        <div class="feature-item"><div class="feature-icon">6</div><div><strong>Scholar-Endorsed</strong><span>Approved by Mufti Yusuf Dhanka, Moulana Sheikh A.R. Patel &amp; more.</span></div></div>
+      </div>
+    </div>
+
+    <!-- 9. Pricing bar -->
     <div class="pricing-bar">
-      <span>Level 1: <span class="highlight">&pound;5</span></span>
-      <span class="sep">&bull;</span>
-      <span>Level 2: <span class="highlight">&pound;7</span></span>
-      <span class="sep">&bull;</span>
-      <span>Level 3: <span class="highlight">&pound;10</span></span>
-      <span class="sep">&bull;</span>
-      <span><span class="free">No Subscriptions</span></span>
+      <span class="pricing-item">Level 1: <strong>£5</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-item">Level 2: <strong>£7</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-item">Level 3: <strong>£10</strong></span>
+      <span class="pricing-sep">·</span>
+      <span class="pricing-note">No Subscriptions</span>
     </div>
-    <div class="cta-section">
-      <div class="cta-text">Start your journey towards a blessed marriage today.<br>Book Your Free Intro Call!</div>
+
+    <!-- 10. CTA gold banner -->
+    <div class="cta-banner">
+      <div class="cta-line1">Start your journey towards a blessed marriage today.</div>
+      <div class="cta-line2">Book Your Free Intro Call!</div>
     </div>
+
+    <!-- 11. Contact bar -->
     <div class="contact-bar">
-      <a href="#">&#128279; www.pairedm.co.uk</a>
-      <span class="sep">|</span>
-      <a href="#">&#9993; info@pairedm.co.uk</a>
+      <span>www.pairedm.co.uk</span>
+      <span class="contact-sep"> | </span>
+      <span>info@pairedm.co.uk</span>
     </div>
-    <div class="approved-section">
-      <div class="approved-label">Islamic Guidance</div>
+
+    <!-- 12. Approved stamp -->
+    <div class="stamp-wrapper">
       <div class="approved-stamp">
-        <span class="stamp-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <span class="stamp-heart">&#9829;</span>
         <span class="stamp-main">Approved</span>
         <span class="stamp-sub">By Scholars</span>
       </div>
     </div>
+
+    <!-- 13. Bottom accent bar -->
+    <div class="bottom-accent"></div>
   </div>
-  <div class="bottom-accent"></div>
 </div>
 </div>
 
 <script>
 function showBanner(size) {
-  document.querySelectorAll('.banner-wrapper').forEach(w => w.classList.remove('active'));
-  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.banner-wrapper').forEach(function(w) { w.classList.remove('active'); });
+  document.querySelectorAll('.size-btn').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById('banner-' + size).classList.add('active');
-  event.target.closest('.size-btn').classList.add('active');
+  event.target.classList.add('active');
 }
 </script>
 
