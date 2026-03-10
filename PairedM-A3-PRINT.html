@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PairedM - A3 Print Ready</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #fff; margin: 0; padding: 3mm; color: #333; }
+
+  .size-label { display: none; }
+
+  /* ── Page container ── */
+  .page {
+    margin: 0; position: relative; overflow: hidden;
+    background: #fffdf5; box-shadow: none;
+  }
+
+  /* ── Gold ornamental border ── */
+  .page::before {
+    content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 2px solid #c9a84c; pointer-events: none; z-index: 10;
+  }
+  .page::after {
+    content: ''; position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(201,168,76,0.4); pointer-events: none; z-index: 10;
+  }
+
+  /* ── Corner ornaments ── */
+  .corner { position: absolute; z-index: 11; color: #c9a84c; line-height: 1; }
+  .corner-tl { top: 14px; left: 14px; }
+  .corner-tr { top: 14px; right: 14px; }
+  .corner-bl { bottom: 14px; left: 14px; }
+  .corner-br { bottom: 14px; right: 14px; }
+
+  /* ── Inner wrapper ── */
+  .inner { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; }
+
+  /* ── Logo area — matching actual PairedM logo ── */
+  .logo-area {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-hearts {
+    position: relative; display: inline-block;
+  }
+  .heart-big {
+    display: block; color: #c0392b;
+    filter: drop-shadow(0 2px 4px rgba(192,57,43,0.3));
+  }
+  .heart-sm1, .heart-sm2 {
+    position: absolute; color: #c0392b;
+  }
+  .logo-divider {
+    width: 2px; background: linear-gradient(180deg, #e8721d, #c9a84c);
+    align-self: stretch; margin: 0;
+    border-radius: 1px;
+  }
+  .logo-text-group { display: flex; flex-direction: column; justify-content: center; }
+  .logo-main-text {
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 3px;
+    background: linear-gradient(135deg, #e8721d 0%, #d4943a 40%, #c9a84c 70%, #e8a530 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .logo-main-text .bracket {
+    font-weight: 700; color: #e8721d;
+    -webkit-text-fill-color: #e8721d;
+  }
+  .logo-subtitle-text {
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #d4943a, #c9a84c);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Trust badges row ── */
+  .trust-row { display: flex; justify-content: center; flex-wrap: wrap; }
+  .trust-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .trust-badge .icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%; color: #fff; font-weight: 700;
+  }
+  .trust-badge:nth-child(1) .icon { background: #27ae60; }
+  .trust-badge:nth-child(1) { color: #27ae60; }
+  .trust-badge:nth-child(2) .icon { background: #c0392b; }
+  .trust-badge:nth-child(2) { color: #c0392b; }
+  .trust-badge:nth-child(3) .icon { background: #27ae60; }
+  .trust-badge:nth-child(3) { color: #27ae60; }
+  .trust-badge:nth-child(4) .icon { background: #c9a84c; }
+  .trust-badge:nth-child(4) { color: #c9a84c; }
+
+  /* ── Headline ── */
+  .headline {
+    background: linear-gradient(135deg, #8b1a1a 0%, #a52a2a 50%, #8b1a1a 100%);
+    text-align: center; color: #fff; width: 100%;
+  }
+  .headline h2 {
+    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* ── QR Section ── */
+  .qr-section { text-align: center; }
+  .qr-box {
+    display: inline-block; border: 2px solid #c9a84c; border-radius: 12px;
+    background: linear-gradient(135deg, #fffdf5, #faf3e0); text-align: center;
+    box-shadow: 0 2px 8px rgba(201,168,76,0.15);
+  }
+  .qr-placeholder {
+    background: #fff; display: flex; align-items: center; justify-content: center;
+    color: #bbb; font-weight: 500; margin: 0 auto; border: 1px solid #e0d5c0; border-radius: 6px;
+  }
+  .qr-img { display: block; object-fit: contain; border-radius: 6px; margin: 0 auto; }
+  .scan-label {
+    font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #8b1a1a 0%, #a52a2a 50%, #8b1a1a 100%);
+    border-radius: 6px; display: inline-block;
+  }
+
+  /* ── Quran verse ── */
+  .verse-section {
+    border-top: 1px solid #e0d5c0; border-bottom: 1px solid #e0d5c0;
+    background: rgba(201,168,76,0.04); text-align: center; width: 100%;
+  }
+  .verse-text {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: #5a4a3a; line-height: 1.6;
+  }
+  .verse-ref { color: #c9a84c; font-weight: 500; }
+
+  /* ── Features list ── */
+  .features-list { list-style: none; width: 100%; }
+  .features-list li { display: flex; align-items: baseline; line-height: 1.5; }
+  .features-list li .bullet {
+    color: #8b1a1a; flex-shrink: 0; margin-right: 8px;
+    font-size: 70%; line-height: inherit;
+  }
+  .features-list li strong { color: #1a1a1a; }
+
+  /* ── Pricing bar ── */
+  .pricing-bar {
+    display: flex; justify-content: center; align-items: center;
+    flex-wrap: wrap; color: #555; width: 100%;
+    border-top: 1px solid #eee; border-bottom: 1px solid #eee;
+  }
+  .pricing-bar .money-icon { margin-right: 4px; }
+  .pricing-bar .sep { margin: 0 8px; color: #c9a84c; }
+  .pricing-bar .highlight { color: #c0392b; font-weight: 700; }
+  .pricing-bar .free { color: #27ae60; font-weight: 700; }
+
+  /* ── CTA Section ── */
+  .cta-section {
+    background: linear-gradient(135deg, #c9a84c 0%, #d4af37 50%, #c9a84c 100%);
+    text-align: center; width: 100%;
+  }
+  .cta-text {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-weight: 700; color: #5a1a1a; line-height: 1.35;
+  }
+
+  /* ── Contact bar ── */
+  .contact-bar {
+    display: flex; justify-content: center; align-items: center;
+    flex-wrap: wrap;
+  }
+  .contact-bar a { color: #c0392b; text-decoration: none; font-weight: 500; }
+  .contact-bar .sep { color: #ccc; margin: 0 8px; }
+
+  /* ── Approved badge ── */
+  .approved-section { text-align: center; }
+  .approved-label {
+    font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #1a1a1a;
+  }
+  .approved-badge {
+    display: flex; align-items: center; justify-content: center; margin: 0 auto;
+    border-radius: 50%; border: 3px solid #c0392b;
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    color: #fff; font-weight: 800; text-transform: uppercase;
+    text-align: center; line-height: 1.2;
+  }
+
+  /* ============================================================
+     A3 (297mm x 420mm)
+     ============================================================ */
+  .a3 { width: 297mm; }
+  .a3 .inner { padding: 46px 42px 36px; gap: 14px; }
+  .a3 .corner { font-size: 24px; }
+
+  .a3 .logo-area { gap: 16px; margin-bottom: 8px; }
+  .a3 .heart-big { font-size: 56px; }
+  .a3 .heart-sm1 { font-size: 20px; top: -12px; right: -8px; }
+  .a3 .heart-sm2 { font-size: 14px; top: -3px; right: -22px; }
+  .a3 .logo-divider { height: 60px; }
+  .a3 .logo-main-text { font-size: 32pt; letter-spacing: 4px; }
+  .a3 .logo-subtitle-text { font-size: 8pt; letter-spacing: 4px; margin-top: 3px; }
+
+  .a3 .trust-row { gap: 18px; margin-bottom: 6px; }
+  .a3 .trust-badge { font-size: 9pt; }
+  .a3 .trust-badge .icon { width: 20px; height: 20px; font-size: 11px; }
+
+  .a3 .headline { padding: 18px 34px; }
+  .a3 .headline h2 { font-size: 17pt; }
+
+  .a3 .qr-section { margin: 8px 0; }
+  .a3 .qr-box { padding: 14px 20px; }
+  .a3 .qr-placeholder { width: 96px; height: 96px; font-size: 9pt; border-radius: 10px; }
+  .a3 .qr-img { width: 96px; height: 96px; }
+  .a3 .scan-label { font-size: 9.5pt; margin-top: 7px; padding: 5px 14px; }
+
+  .a3 .verse-section { padding: 14px 34px; }
+  .a3 .verse-text { font-size: 10.5pt; }
+  .a3 .verse-ref { font-size: 9pt; margin-top: 5px; }
+
+  .a3 .features-list { padding: 0 20px; }
+  .a3 .features-list li { font-size: 11pt; margin-bottom: 7px; }
+
+  .a3 .pricing-bar { font-size: 10pt; padding: 10px 12px; }
+
+  .a3 .cta-section { padding: 18px 30px; }
+  .a3 .cta-text { font-size: 19pt; }
+
+  .a3 .contact-bar { font-size: 10pt; margin-top: 8px; }
+  .a3 .approved-section { margin-top: 8px; }
+  .a3 .approved-label { font-size: 7.5pt; margin-bottom: 5px; }
+  .a3 .approved-badge { width: 72px; height: 72px; font-size: 8pt; }
+
+  @media print {
+    @page { size: 303mm 426mm; margin: 0; }
+    .size-label { display: none; }
+    .page { box-shadow: none; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Crop marks overlay -->
+<div style="position:fixed;inset:0;pointer-events:none;z-index:999;">
+  <!-- Crop marks - thin black lines at corners showing trim edges -->
+  <!-- Top-left -->
+  <div style="position:absolute;top:3mm;left:0;width:3mm;height:0.3mm;background:#000;"></div>
+  <div style="position:absolute;top:0;left:3mm;width:0.3mm;height:3mm;background:#000;"></div>
+  <!-- Top-right -->
+  <div style="position:absolute;top:3mm;right:0;width:3mm;height:0.3mm;background:#000;"></div>
+  <div style="position:absolute;top:0;right:3mm;width:0.3mm;height:3mm;background:#000;"></div>
+  <!-- Bottom-left -->
+  <div style="position:absolute;bottom:3mm;left:0;width:3mm;height:0.3mm;background:#000;"></div>
+  <div style="position:absolute;bottom:0;left:3mm;width:0.3mm;height:3mm;background:#000;"></div>
+  <!-- Bottom-right -->
+  <div style="position:absolute;bottom:3mm;right:0;width:3mm;height:0.3mm;background:#000;"></div>
+  <div style="position:absolute;bottom:0;right:3mm;width:0.3mm;height:3mm;background:#000;"></div>
+  <!-- Registration marks -->
+  <div style="position:absolute;top:-1mm;left:50%;transform:translateX(-50%);"><svg width="4mm" height="4mm" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="#000" stroke-width=".5"/><line x1="0" y1="10" x2="20" y2="10" stroke="#000" stroke-width=".3"/><line x1="10" y1="0" x2="10" y2="20" stroke="#000" stroke-width=".3"/></svg></div>
+  <div style="position:absolute;bottom:-1mm;left:50%;transform:translateX(-50%);"><svg width="4mm" height="4mm" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="#000" stroke-width=".5"/><line x1="0" y1="10" x2="20" y2="10" stroke="#000" stroke-width=".3"/><line x1="10" y1="0" x2="10" y2="20" stroke="#000" stroke-width=".3"/></svg></div>
+  <!-- Color bar -->
+  <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);display:flex;">
+    <div style="width:4mm;height:2mm;background:#0FF;"></div>
+    <div style="width:4mm;height:2mm;background:#F0F;"></div>
+    <div style="width:4mm;height:2mm;background:#FF0;"></div>
+    <div style="width:4mm;height:2mm;background:#000;"></div>
+  </div>
+  <!-- Job info -->
+  <div style="position:absolute;top:0.5mm;left:4mm;font-size:5pt;font-family:Helvetica,sans-serif;color:#000;">PairedM — A3 (297×420mm) — 3mm Bleed — Print Ready</div>
+</div>
+
+<!-- A3 Page -->
+<div class="page a3">
+  <span class="corner corner-tl">&#10053;</span>
+  <span class="corner corner-tr">&#10053;</span>
+  <span class="corner corner-bl">&#10053;</span>
+  <span class="corner corner-br">&#10053;</span>
+  <div class="inner">
+    <div class="logo-area">
+      <div class="logo-hearts">
+        <span class="heart-big">&#10084;</span>
+        <span class="heart-sm1">&#10084;</span>
+        <span class="heart-sm2">&#10084;</span>
+      </div>
+      <div class="logo-divider"></div>
+      <div class="logo-text-group">
+        <div class="logo-main-text">PAIRED <span class="bracket">[</span>M<span class="bracket">]</span></div>
+        <div class="logo-subtitle-text">Unite by Meeting</div>
+      </div>
+    </div>
+    <div class="trust-row">
+      <span class="trust-badge"><span class="icon">&#10003;</span> Shariah-Compliant</span>
+      <span class="trust-badge"><span class="icon">&#9792;</span> Free for Sisters</span>
+      <span class="trust-badge"><span class="icon">&#10003;</span> Verified Profiles</span>
+      <span class="trust-badge"><span class="icon">&#10084;</span> Coordinator Support</span>
+    </div>
+    <div class="headline">
+      <h2>A Revolutionary Nikah Service &mdash; The first where all meetings are Face to Face with support from our team on every call.</h2>
+    </div>
+    <div class="qr-section">
+      <div class="qr-box">
+        <img class="qr-img" src="/Users/rahimaayazkhan/Desktop/Screenshot 2026-03-09 at 13.18.09.png" alt="QR Code">
+        <div class="scan-label">Download Now</div>
+      </div>
+    </div>
+    <div class="verse-section">
+      <div class="verse-text">"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquillity with them, and He has put love and mercy between your hearts."</div>
+      <div class="verse-ref">&mdash; Surah Ar-Rum (30:21)</div>
+    </div>
+    <ul class="features-list">
+      <li><span class="bullet">&#9654;</span><span><strong>Islamic Guidance</strong> &mdash; Shariah-compliant, overseen by our Board of Islamic Scholars.</span></li>
+      <li><span class="bullet">&#9654;</span><span><strong>Nationwide UK coverage</strong> with English-speaking Imams available.</span></li>
+      <li><span class="bullet">&#9654;</span><span><strong>Fully Vetted</strong> &mdash; all profiles undergo background checks for your safety.</span></li>
+      <li><span class="bullet">&#9654;</span><span><strong>Pay As You Go</strong> &mdash; zero subscription fees, nominal charges of only &pound;5&ndash;&pound;10. Free for sisters.</span></li>
+      <li><span class="bullet">&#9654;</span><span><strong>Three simple steps</strong> &mdash; Create a Profile, Set Preferences, Match &amp; Meet.</span></li>
+      <li><span class="bullet">&#9654;</span><span><strong>Certified Halal</strong> as approved by our Islamic board of scholars.</span></li>
+    </ul>
+    <div class="pricing-bar">
+      <span><span class="money-icon">&#128176;</span> Zero Subscription Fees</span>
+      <span class="sep">&bull;</span>
+      <span>Nominal Charges: <span class="highlight">&pound;5 &ndash; &pound;10</span></span>
+      <span class="sep">&bull;</span>
+      <span>Sisters: <span class="free">Completely FREE</span></span>
+    </div>
+    <div class="cta-section">
+      <div class="cta-text">Start your journey towards a blessed marriage today.<br>Get Started Free!</div>
+    </div>
+    <div class="contact-bar">
+      <a href="#">&#128279; www.pairedm.co.uk</a>
+      <span class="sep">|</span>
+      <a href="#">&#9993; info@pairedm.co.uk</a>
+    </div>
+    <div class="approved-section">
+      <div class="approved-label">Islamic Guidance</div>
+      <div class="approved-badge">Approved</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
